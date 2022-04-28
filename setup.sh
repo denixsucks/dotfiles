@@ -2,11 +2,11 @@
 
 # DOWNLOAD VARIOUS THINGS
 
-sudo pacman -S picom awesome parcellite nitrogen 
+sudo pacman -S picom awesome parcellite nitrogen betterlockscreen rofi kitty alacritty neofetch xorg-xinit
 
 # Start X Server Script 
 
-sudo cp ./start /bin/start
+sudo cp ./scripts/start /bin/start
 
 
 # Move Config Files to Positions
