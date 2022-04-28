@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo xboxdrv --device-by-id 057e:2009 --type xbox360 --device-name 'EasySMX ESM-9101' --silent --detach-kernel-driver

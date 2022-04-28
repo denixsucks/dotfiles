@@ -1,0 +1,9 @@
+cd ~/git; 
+for i in `ls`;
+do echo $i; 
+cd $i; 
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1;
+then git pull;
+fi;
+cd ~/git;
+done

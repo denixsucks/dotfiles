@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Opens a project with vim and 1 or 2 terminals by project type
+# You need to have your project list at "~/.config/project_list"
+# Example = "Example_Project	~/Projects/example	python"
+# Go projects also needs a 4th object in the list for projects main file
+
+DICT_FILE=$HOME/.config/project_list
+DMENU='rofi -dmenu'
+
+if [ -f $DICT_FILE ]; then
+	FILES=${1:-"$DICT_FILE"}
+
+	# Show list of options
+	choice=$(awk '{print $1}' $FILES | $DMENU -i -p "Select Project")
+
+	if [[ $choice ]]; then
+		# use eval as get vim error if use awk's "system"
+		PROJ_DIR=$(eval $(awk '/'$choice'/ {printf("'echo' %s",$2); exit}' $FILES))
+		PROJ_TYPE=$(eval $(awk '/'$choice'/ {printf("'echo' %s",$3); exit}' $FILES))
+
+		awesome-client "awful = require('awful') local screen = awful.screen.focused() screen.tags[3]:view_only()" &&
+
+		cd $PROJ_DIR && 
+		if [ $PROJ_TYPE = "django" ]; then
+            exec $TERMINAL -e nvim &
+			sleep 0.3 && cd $PROJ_DIR && exec $TERMINAL -e pipenv shell python manage.py runserver &
+			sleep 0.5 && cd $PROJ_DIR && exec $TERMINAL &
+        elif [ $PROJ_TYPE = "python" ]; then
+        exec $TERMINAL -e nvim &
+			MAIN_FILE=$(eval $(awk '/'$choice'/ {printf("'echo' %s",$4); exit}' $FILES))
+			sleep 0.3 && cd $PROJ_DIR && exec $TERMINAL -e pipenv shell python $MAIN_FILE &
+			sleep 0.5 && cd $PROJ_DIR && exec $TERMINAL &
+        elif [ $PROJ_TYPE = "odoo" ]; then
+            exec $TERMINAL -e nvim &
+			sleep 0.3 && cd $PROJ_DIR && exec $TERMINAL -e zsh -c 'odoo-server&zsh' &
+			sleep 0.5 && cd $PROJ_DIR && exec $TERMINAL &
+		elif [ $PROJ_TYPE = "go" ]; then
+            exec $TERMINAL -e nvim &
+			MAIN_FILE=$(eval $(awk '/'$choice'/ {printf("'echo' %s",$4); exit}' $FILES))
+			if [ -f $MAIN_FILE ]; then
+				sleep 0.5 && cd $PROJ_DIR && exec $TERMINAL -e zsh -c "go run $MAIN_FILE;zsh" &
+			fi
+			sleep 0.5 && cd $PROJ_DIR && exec $TERMINAL &
+		else
+			sleep 0.5 && cd $PROJ_DIR && exec $TERMINAL &
+		fi
+
+		sleep 1 && awesome-client "awful.client.focus.byidx(1)"
+	fi
+else
+	$DMENU -p "project_list file does not exits"
+fi
