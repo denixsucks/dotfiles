@@ -100,9 +100,11 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal,
       id = "rightwidgets",
       wibox.widget.systray(),
+      seperator,
       widgets.kblayout,
       widgets.temp,
       widgets.disk,
+      seperator,
       widgets.cpu,
       widgets.mem,
       widgets.vol,
@@ -147,7 +149,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Quake terminal
 quake = utils.quake {
-  app = terminal,
+  app = terminal, 
   horiz = "center",
   height = 0.4,
   width = 0.9,

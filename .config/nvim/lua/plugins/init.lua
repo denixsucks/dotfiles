@@ -109,7 +109,8 @@ return require('packer').startup(function()
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-media-files.nvim'
-
+  
+  use 'glepnir/dashboard-nvim'
   if PackerBootstrap then
     require('packer').sync()
   end

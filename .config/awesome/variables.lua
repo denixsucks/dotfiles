@@ -2,7 +2,7 @@ local awful = require("awful")
 local utils = require("utils")
 
 terminal = "alacritty"
-browser1 = "firefox"
+browser1 = "prime-run chromium"
 browser2 = "min"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
@@ -25,27 +25,27 @@ awful.layout.layouts = {
 
 awful.util.tagnames = {
 	{
-		{name = "1", sel = true},
-		{name = "2", sgap = true},
-		{name = "3", lay = awful.layout.layouts[3], mw = 0.87},
-		{name = "4"},
-		{name = "5"},
-		{name = "6"},
-		{name = "7"},
-		{name = "8"},
-		{name = "9"},
-		{name = "10"},
+		{name = "•", sel = true},
+		{name = "•", sgap = true},
+		{name = "•", lay = awful.layout.layouts[3], mw = 0.87},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
 	},
 	{
-		{name = "1", sel = true},
-		{name = "2"},
-		{name = "3"},
-		{name = "4"},
-		{name = "5"},
-		{name = "6"},
-		{name = "7"},
-		{name = "8"},
-		{name = "9"},
-		{name = "10"},
+		{name = "•", sel = true},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
+		{name = "•"},
 	}
 }

@@ -12,7 +12,7 @@ menukeys = gtable.join(
   -- Action Menus
   awful.key({ modkey }, "F3",
     function()
-      awful.spawn.with_shell("displayselect \"rofi -dmenu\"")
+      awful.spawn.with_shell("~./scripts/displayselect \"rofi -dmenu\"")
     end,
     {description = "show display selection", group = "launcher"}),
 
@@ -36,13 +36,13 @@ menukeys = gtable.join(
 
   awful.key({ modkey }, "p",
     function()
-      awful.spawn.with_shell("startproject")
+      awful.spawn.with_shell("~/.scripts/startproject")
     end,
     {description = "project selector", group = "launcher"}),
 
   awful.key({ modkey }, "b",
     function()
-      awful.spawn.with_shell("rofi-bluetooth")
+      awful.spawn.with_shell("~/.scripts/rofi-bluetooth")
     end,
     {description = "Bluetooth Manager", group = "launcher"})
 )

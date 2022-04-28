@@ -1,6 +1,6 @@
 local awful = require('awful')
 local gtable = require('gears.table')
-local touchpad_state = ""
+test = 1
 
 layoutkeys = gtable.join(
   awful.key({ modkey, ctrlkey }, "l",
@@ -54,11 +54,18 @@ layoutkeys = gtable.join(
     end,
     {description = "select previous", group = "layout"}),
 
-  awful.key({modkey, shiftkey},"m",
+  awful.key({altkey, shiftkey},"m",
     function()
-      awful.spawn.easy_async('xinput list-props 19 | grep "361" | egrep -o "[0-9]$"',function(stdout)
-      	if stdout:match(0) then awful.spawn.with_shell('xinput set-prop 19 361 1') else awful.spawn.with_shell('xinput set-prop 19 361 0') end
-      end)
+     -- awful.spawn.easy_async('xinput list-props 19 | grep "189" | egrep -o "[0-9]$"',function(stdout)
+     --	if stdout:match(0) then awful.spawn(terminal .. ' -e xinput enable 19') else awful.spawn(terminal .. ' -e xinput disable 19') end
+     -- end)
+     if test == 0 then
+     	 awful.spawn.with_shell('xinput enable 19')
+     	 test = 1
+     else
+     	 awful.spawn.with_shell('xinput disable 19')
+     	 test = 0
+	 end
     end,
     {description = "brooo touchpaddd", group = "touchpad"}
   )

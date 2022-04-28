@@ -19,8 +19,7 @@ function build_widget:new (value_widget, icon, icon_color, last)
     obj.is_space = wibox.widget.textbox('')
   end
 
-  obj.pipe = obj.is_space or wibox.widget.textbox(string.format(' <span color="%s">|</span>', beautiful.xcolor8))
-  
+  obj.pipe = obj.is_space or wibox.widget.textbox(string.format(' <span color="%s">|</span>', beautiful.xcolor6))
   obj.widget_icon = wibox.widget.textbox(build_icon(icon, icon_color))
 
   obj.widget = wibox.widget{
