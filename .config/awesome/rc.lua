@@ -105,7 +105,7 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.widget.systray(),
       seperator,
       widgets.kblayout,
-      widgets.temp,
+      --widgets.temp,
       widgets.disk,
       seperator,
       widgets.cpu,

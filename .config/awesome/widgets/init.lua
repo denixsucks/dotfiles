@@ -19,7 +19,7 @@ widgets.space = wibox.widget.textbox('<span>  </span>')
 widgets.seperator = wibox.widget.textbox(' <span color="grey">|</span>  ')
 
 -- Textclock
-local textclock_text =wibox.widget.textclock(" %d %b %a %I:%M %p")
+local textclock_text =wibox.widget.textclock(" %d %b %a %H:%M")
 widgets.textclock = build_widget:new(textclock_text, "", "#a753fc", true).widget
 
 local month_calendar = awful.widget.calendar_popup.month()
