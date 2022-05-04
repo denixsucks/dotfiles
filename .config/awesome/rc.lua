@@ -264,7 +264,9 @@ client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
-    c.shape = beautiful.client_shape
+    c.shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, beautiful.corner_radius)
+    end
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
@@ -325,7 +327,9 @@ client.connect_signal("property::fullscreen", function(c)
             gears.shape.rectangle(cr, width, height)
         end
     else 
-        c.shape = beautiful.client_shape
+        c.shape = function(cr, width, height)
+            gears.shape.rounded_rect(cr, width, height, beautiful.corner_radius)
+        end
     end
 end)
 

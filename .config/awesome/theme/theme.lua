@@ -45,16 +45,13 @@ theme.fg_urgent = theme.xcolor15
 
 theme.bg_systray    = theme.bg_normal 
 
-theme.corner_radius = 9
+theme.corner_radius = 12
 theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(7)
 theme.border_normal = theme.fg_focus
 theme.border_focus  = xrdb.foreground
 theme.border_marked = theme.fg_urgent
 theme.notification_bg = xrdb.color9
-theme.client_shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, theme.corner_radius)
-end
 theme.notification_shape = function (cr, w, h)
     gears.shape.partially_rounded_rect(cr, w, h, true, true, false, true, 12)
 end
