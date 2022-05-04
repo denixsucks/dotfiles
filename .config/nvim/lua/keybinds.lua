@@ -21,8 +21,6 @@ nimap('<C-r>', '<Cmd>redo<CR>') -- Redo
 nimap('<C-S-Up>', '<Cmd>m .-2<CR>') -- Move line up
 nimap('<C-S-Down>', '<Cmd>m .+1<CR>') -- Move line down
 
-
--- Copy Paste Right Mouse Click
 map('v', '<RightMouse>', "y")
 nimap('<RightMouse>', 'p')
 map('v', '<S-RightMouse>', "p")
@@ -54,50 +52,41 @@ _G.OpenTerm = function(name, side)
 	end
 end
 
+map('n', '<M-`>', '<Cmd>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>') -- Toggle a side terminal
+map('t', '<M-`>', '<C-\\><C-n>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>') -- Map in terminal mode
+map('n', '<M-CR>', '<Cmd>:call v:lua.OpenTerm("Terminal", v:false)<CR>')
+map('n', '<M-CR>', '<C-\\><C-n>:call v:lua.OpenTerm("Terminal", v:false)<CR>')
+map('t', '<Esc><Esc>', '<C-\\><C-n>')
+
+--map('v', '<C-S-Up>', '<Cmd>m \'>-2<CR>gv=gv')
+--map('v', '<C-S-Down>', '<Cmd>m \'>+1<CR>gv=gv')
+
+-- NvimTree
+map('n', '<C-n>', '<Cmd>NvimTreeToggle<CR>')
+map('n', '<leader>r', '<Cmd>NvimTreeRefresh<CR>')
+
+-- Barbar
+map('n', '<A-z>', '<Cmd>BufferPrevious<CR>')
+map('n', '<A-x>', '<Cmd>BufferNext<CR>')
+map('n', '<A-c>', '<Cmd>BufferClose<CR>')
+map('n', '<A-S-c>', '<Cmd>BufferClose!<CR>')
+
+-- Trouble
+map('n', '<C-x>', '<Cmd>TroubleToggle<CR>')
+
 -- Lspsaga
 nimap('<C-e>', '<Cmd>Lspsaga hover_doc<CR>')
 nimap('<C-g>', '<Cmd>Lspsaga rename<CR>')
+map('n', '[e', '<Cmd>Lspsaga diagnostic_jump_next<CR>')
+map('n', ']e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>')
 
 -- Telescope
 nimap('<C-t>', [[<Cmd>:lua require 'telescope.builtin'.lsp_code_actions(require 'telescope.themes'.get_cursor{})<CR>]])
+map('v', '<C-t>', [[<Cmd>:lua require 'telescope.builtin'.lsp_range_code_actions(require 'telescope.themes'.get_cursor{})<CR>]])
+map('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
+map('n', '<leader>gf', '<Cmd>Telescope git_files<CR>')
+map('n', '<leader>rf', '<Cmd>Telescope oldfiles<CR>') -- recent files
+map('n', '<leader>hl', '<Cmd>Telescope highlights<CR>')
 
-local maps = {
-  -- NvimTree
-  {'n', '<C-n>', '<Cmd>NvimTreeToggle<CR>'},
-  {'n', '<leader>r', '<Cmd>NvimTreeRefresh<CR>'},
-  -- Telescope
-  {'n', 'ff', ':Telescope find_files<CR>'},
-  {'n', 'fl', ':Telescope live_grep<CR>'},
-  {'n', 'fb', ':Telescope buffers<CR>'},
-  {'n', 'ft', ':Telescope lsp_document_symbols<CR>'},
-  {'n', 'fg', ':Telescope git_files<CR>'},
-  {'n', 'fc', ':Telescope git_bcommits<CR>'},
-  {'n', 'fC', ':Telescope git_commits<CR>'},
-  {'n', 'fs', ':Telescope git_status<CR>'},
-  {'n', 'fS', ':Telescope git_stash<CR>'},
-  {'n', 'fm', ':Telescope media_files<CR>'},
-  {'n', 'fq', ':Telescope neoclip<CR>'},
-  -- Trouble
-  {'n', '<C-X>', ':TroubleToggle workspace_diagnostics<CR>'},
-  -- Lspsaga
-  {'n', '[e', '<Cmd>Lspsaga diagnostic_jump_next<CR>'},
-  {'n', ']e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>'},
-  -- Barbar
-  {'n', '<A-z>', '<Cmd>BufferPrevious<CR>'},
-  {'n', '<A-x>', '<Cmd>BufferNext<CR>'},
-  {'n', '<A-c>', '<Cmd>BufferClose<CR>'},
-  {'n', '<A-S-c>', '<Cmd>BufferClose!<CR>'},
-  -- Side Terminal
-  {'n', '<M-`>', '<Cmd>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>'},-- Toggle a side terminal
-  {'t', '<M-`>', '<C-\\><C-n>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>'}, -- Map in terminal mode
-  {'n', '<M-CR>', '<Cmd>:call v:lua.OpenTerm("Terminal", v:false)<CR>'},
-  {'n', '<M-CR>', '<C-\\><C-n>:call v:lua.OpenTerm("Terminal", v:false)<CR>'},
-  {'t', '<Esc><Esc>', '<C-\\><C-n>'}
-
-
-
-}
-for _, i in pairs(maps) do
-  vim.api.nvim_set_keymap(i[1], i[2], i[3], {noremap = true, silent = true})
-end
-
+map('n', '<C-k>', '<Cmd>Telescope keymaps<CR>') -- look at keybinds
+map('n', '<C-f>', '<Cmd>Telescope current_buffer_fuzzy_find<CR>')
