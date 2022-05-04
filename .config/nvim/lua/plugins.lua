@@ -326,7 +326,7 @@ return require 'packer'.startup(function(use)
 			symbols_outline = true,
 		}
 
-	}
+,	}
 		
 end
 }

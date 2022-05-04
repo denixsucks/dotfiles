@@ -130,9 +130,6 @@ client.connect_signal("manage", function (c)
     -- Prevent clients from being unreachable after screen count changes.
     awful.placement.no_offscreen(c, {honor_padding = true})
   end
-  c.shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 12)
-  end
 end)
 
 
@@ -145,7 +142,9 @@ end)
 -- Force minimized clients to unminimize.
 client.connect_signal("property::minimized", function(c)
   c.minimized = false
+
 end)
+
 
 -- Turn border color to back if there is only one client in the tag.
 function border_adjust(c)
@@ -175,4 +174,3 @@ quake = utils.quake {
   followtag = true,
   border = 0
 }
-
