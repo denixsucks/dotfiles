@@ -7,7 +7,6 @@ local xrdb = xresources.get_current_theme()
 local theme = {}
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 
-
 -- Colors
 theme.xbackground = xrdb.background 
 theme.xforeground = xrdb.foreground 
@@ -41,35 +40,8 @@ theme.fg_focus = theme.xforeground
 theme.bg_urgent = theme.xcolor1
 theme.fg_urgent = theme.xcolor15
 
-
-
-theme.bg_systray    = theme.bg_normal 
-
-theme.corner_radius = 12
-theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(7)
-theme.border_normal = theme.fg_focus
-theme.border_focus  = xrdb.foreground
-theme.border_marked = theme.fg_urgent
-theme.notification_bg = xrdb.color9
-theme.notification_shape = function (cr, w, h)
-    gears.shape.partially_rounded_rect(cr, w, h, true, true, false, true, 12)
-end
-
-theme.taglist_squares = "true"
-theme.titlebar_close_button = "true"
-theme.menu_height = dpi(10)
-theme.menu_width  = dpi(100)
-theme.wibar_stretch = false
-theme.wibar_width = 1000
-theme.wibar_height = 23
-theme.wibar_border_width = 10
-theme.wibar_opacity = 0.68
-theme.background_opacity = 0.25
-
-
 -- Borders
-theme.border_width = dpi(1)
+theme.border_width = dpi(2)
 theme.border_normal = theme.xbackground
 theme.border_focus = theme.xcolor7
 
@@ -79,10 +51,21 @@ theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_bg_empty = theme.bg_normal
 theme.taglist_fg_empty = theme.xcolor7
 theme.taglist_fg_occupied = theme.xcolor15
-theme.taglist_bg_occupied = theme.xcolor8
+theme.taglist_bg_occupied = theme.xcolor0
 theme.taglist_bg_urgent = theme.xcolor1
 theme.taglist_fg_urgent = theme.xcolor15
 theme.taglist_spacing = dpi(0)
+
+theme.taglist_squares = "true"
+theme.titlebar_close_button = "true"
+theme.menu_height = dpi(15)
+theme.menu_width  = dpi(100)
+--theme.wibar_stretch = false
+theme.wibar_width = 1000
+theme.wibar_height = 25
+theme.wibar_border_width = 5
+theme.wibar_opacity = 0.68
+theme.background_opacity = 0.8
 
 theme.awesome_icon = theme.dir .."/icons/awesome.png"
 theme.layout_tile = theme.dir .. "/icons/tile.png"
@@ -98,5 +81,15 @@ theme.layout_magnifier = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating = theme.dir .. "/icons/floating.png"
 theme.layout_cornernw = theme.dir .. "/icons/cornernw.png"
 theme.layout_centerwork = theme.dir .. "/icons/centerwork.png"
+theme.corner_radius = 9
+theme.client_shape = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, theme.corner_radius)
+end
+theme.notification_shape = function (cr, w, h)
+    gears.shape.partially_rounded_rect(cr, w, h, true, true, false, true, 12)
+end
 
+theme.useless_gap = dpi(5)
+theme.screen_margin = dpi(5)
+theme.maximized_hide_border = true
 return theme

@@ -7,12 +7,15 @@ browser2 = "qutebrowser"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 file1 = terminal .. " -e " .. "ranger"
-file2 = "nemo"
+file2 = "pcmanfm"
 music = terminal .. " -e ncmpcpp"
 
-thermal_zone = 1
+screen1 = "HDMI-0"
+screen2 = "DVI-I-0"
 
 lockscreen = "betterlockscreen -l dimblur"
+
+is_laptop = false
 
 awful.layout.layouts = {
     awful.layout.suit.tile,
@@ -26,7 +29,7 @@ awful.layout.layouts = {
 awful.util.tagnames = {
 	{
 		{name = "1", sel = true},
-		{name = "2", sgap = true},
+		{name = "2"},
 		{name = "3", lay = awful.layout.layouts[3], mw = 0.87},
 		{name = "4"},
 		{name = "5"},

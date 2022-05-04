@@ -5,15 +5,13 @@
 --      plugged (boolean)
 --
 local awful = require("awful")
-local naughty = require("naughty")
 
 local update_interval = 30
 
 local battery_script = [[
   sh -c "
-    ls -lL /sys/class/power_supply | grep BAT | awk '{print $9}'\
+  upower -i $(upower -e | grep BAT) | grep percentage | awk '{print $2}'
   "]]
-
 
 -- Subscribe to power supply status changes with acpi_listen
 local charger_script = [[
@@ -23,21 +21,12 @@ local charger_script = [[
 
 -- Periodically get battery info
 awful.widget.watch(battery_script, update_interval, function(widget, stdout)
-  local battery_perc = 0
-  local battery_number = 0
-  for line in stdout:gmatch("[^\r\n]+") do
-    awful.spawn.easy_async_with_shell(string.format("bash -c 'cat /sys/class/power_supply/%s/capacity'", line),
-      function(out)
-        battery_number = battery_number + 1
-        battery_perc = (battery_perc + out) / battery_number
-        awesome.emit_signal("evil::battery", math.floor(battery_perc))
-      end
-    )
-  end
+    local battery = stdout:gsub("%%", "")
+    awesome.emit_signal("evil::battery", tonumber(battery))
 end)
 
 local emit_charger_info = function()
-    awful.spawn.easy_async_with_shell("bash -c 'cat /sys/class/power_supply/*/online'", function (out)
+    awful.spawn.easy_async_with_shell("cat /sys/class/power_supply/*/online", function (out)
         status = tonumber(out)
         if status == 1 then
             awesome.emit_signal("evil::charger", true)

@@ -4,10 +4,10 @@
 local awful = require("awful")
 
 local update_interval = 15
-local temp_script = string.format([[
+local temp_script = [[
   sh -c "
-  cat /sys/class/thermal/thermal_zone%s/temp
-  "]], thermal_zone)
+  cat /sys/class/thermal/thermal_zone2/temp
+  "]]
 
 -- Periodically get temperature info
 awful.widget.watch(temp_script, update_interval, function(widget, stdout)

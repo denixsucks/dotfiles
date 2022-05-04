@@ -2,10 +2,14 @@ local awful = require("awful")
 local wibox = require("wibox")
 local build_widget = require("widgets.build_widget")
 
-local vol_perc = wibox.widget.textbox('00%')
-
+local vol_perc = wibox.widget{
+  markup = "00%",
+  align  = 'center',
+  valign = 'center',
+  widget = wibox.widget.textbox
+}
 local vol_icon = ""
-local vol_icon_color = beautiful.xcolor11
+local vol_icon_color = "#ff8e1e"
 
 
 awesome.connect_signal("evil::volume", function(volume, muted)
@@ -22,18 +26,20 @@ awesome.connect_signal("evil::volume", function(volume, muted)
     vol:UpdateIcon(vol_icon, vol_icon_color)
   end
   if not muted then
-    vol_icon_color = beautiful.xcolor11
+    vol_icon_color = "#ff8e1e"
     vol_perc.markup = string.format("%02d%%", cur_vol)
     vol:UpdateIcon(vol_icon, vol_icon_color)
   else
-    vol_icon_color = beautiful.xcolor1
+    vol_icon_color = "red"
     vol_perc.markup = '<span color="red">mute</span>'
     vol:UpdateIcon(vol_icon, vol_icon_color)
   end
 end
 )
 
-vol = build_widget:new(vol_perc, vol_icon, vol_icon_color)
+hide_separator = not is_laptop
+
+vol = build_widget:new(vol_perc, vol_icon, vol_icon_color, hide_separator)
 
 vol.widget:buttons(awful.util.table.join(
   awful.button({}, 2, function() -- left click

@@ -42,8 +42,7 @@ awful.rules.rules = {
       }
     },
     properties = { 
-      floating = true,
-      ontop = true,
+      floating = true 
     }
   },
 
