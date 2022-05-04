@@ -64,7 +64,7 @@ theme.menu_width  = dpi(100)
 theme.wibar_width = 1000
 theme.wibar_height = 25
 theme.wibar_border_width = 5
-theme.wibar_opacity = 0.68
+theme.wibar_opacity = 0.8
 theme.background_opacity = 0.8
 
 theme.awesome_icon = theme.dir .."/icons/awesome.png"
