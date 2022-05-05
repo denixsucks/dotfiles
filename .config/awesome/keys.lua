@@ -184,7 +184,7 @@ globalkeys = gears.table.join(
   -- Media Controls
   awful.key({}, "XF86AudioPlay",
     function()
-      awful.spawn.with_shell("playerctl play")
+      awful.spawn.with_shell("playerctl play-pause")
     end,
     {description = "toggle play/pause", group = "controls"}),
   awful.key({}, "XF86AudioStop",
