@@ -1,6 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local build_widget = require("widgets.build_widget")
+beautiful = require('beautiful')
 
 local widgets = {}
 
@@ -11,7 +12,7 @@ widgets.temp = require('widgets.temp')
 widgets.disk = require('widgets.disk')
 widgets.vol = require('widgets.vol')
 widgets.bat = require('widgets.bat')
-widgets.mpd = require('widgets.mpd')
+widgets.media = require('widgets.media')
 widgets.kblayout = require('widgets.kblayout')
 
 -- Separators

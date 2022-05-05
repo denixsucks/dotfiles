@@ -5,7 +5,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local utils = require("utils")
-
 local keys = require("keys")
 local rules = require("rules")
 local variables = require("variables")
@@ -96,7 +95,7 @@ awful.screen.connect_for_each_screen(function(s)
       s.mytaglist,
       s.mypromptbox,
       widgets.seperator,
-      widgets.mpd,
+      widgets.media,
     },
       wibox.container.place(widgets.textclock, "center"),
     { -- Right widgets
@@ -105,7 +104,7 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.widget.systray(),
       seperator,
       widgets.kblayout,
-      --widgets.temp,
+      widgets.temp,
       widgets.disk,
       seperator,
       widgets.cpu,
@@ -158,12 +157,7 @@ end
 client.connect_signal("focus", border_adjust)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- Autostart
--- for _, i in pairs(autostart) do
---  awful.spawn.with_shell("~/.config/awesome/autorun.sh " .. i)
--- end
 
--- awful.spawn.with_shell("pulsemixer --unmute")
 
 -- Quake terminal
 quake = utils.quake {

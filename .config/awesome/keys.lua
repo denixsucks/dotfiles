@@ -13,6 +13,7 @@ ctrlkey = "Control"
 shiftkey = "Shift"
 
 local keys = {}
+local track_on = 0
 
 globalkeys = gears.table.join(
   -- Move between tags
@@ -209,12 +210,8 @@ globalkeys = gears.table.join(
     {description = "Decrease brightness", group = "controls"}),
 
   -- Screenshot
-  awful.key({}, "Print", function() awful.spawn.with_shell("xfce4-screenshooter -f -s ~/Pictures/Screenshots") end,
-    {description = "took screenshot of entire screen", group = "screenshot"}),
-  awful.key({ shiftkey }, "Print", function() awful.spawn.with_shell("xfce4-screenshooter -w -s ~/Pictures/Screenshots") end,
-    {description = "took screenshot of focused window", group = "screenshot"}),
-  awful.key({ ctrlkey }, "Print", function() awful.spawn.with_shell("xfce4-screenshooter -r -s ~/Pictures/Screenshots") end,
-    {description = "took screenshot of selected area", group = "screenshot"})
+  awful.key({}, "Print", function() awful.spawn.with_shell("flameshot gui") end,
+    {description = "took screenshot of entire screen", group = "screenshot"})
 )
 
 
@@ -253,9 +250,22 @@ clientkeys = gears.table.join(
       c.maximized = not c.maximized
       c:raise()
     end,
-    {description = "(un)maximize", group = "client"})
-)
+  {description = "(un)maximize", group = "client"}),
+  
 
+  
+  awful.key({altkey, shiftkey}, "m", 
+  function()
+      if track_on == 0 then 
+        awful.spawn.easy_async("xinput disable 19")
+        track_on = 1 
+      else
+        awful.spawn.easy_async('xinput enable 19')
+        track_on = 0 
+      end    
+  end,
+    {description = "enable/disable touchpad", group = "touchpad"})
+)
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.

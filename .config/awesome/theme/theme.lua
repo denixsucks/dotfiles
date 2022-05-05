@@ -60,12 +60,13 @@ theme.taglist_squares = "true"
 theme.titlebar_close_button = "true"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
---theme.wibar_stretch = false
+theme.wibar_stretch = false
 theme.wibar_width = 1000
 theme.wibar_height = 25
 theme.wibar_border_width = 5
 theme.wibar_opacity = 0.8
 theme.background_opacity = 0.8
+
 
 theme.awesome_icon = theme.dir .."/icons/awesome.png"
 theme.layout_tile = theme.dir .. "/icons/tile.png"
@@ -81,13 +82,6 @@ theme.layout_magnifier = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating = theme.dir .. "/icons/floating.png"
 theme.layout_cornernw = theme.dir .. "/icons/cornernw.png"
 theme.layout_centerwork = theme.dir .. "/icons/centerwork.png"
-theme.corner_radius = 9
-theme.client_shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, theme.corner_radius)
-end
-theme.notification_shape = function (cr, w, h)
-    gears.shape.partially_rounded_rect(cr, w, h, true, true, false, true, 12)
-end
 
 theme.useless_gap = dpi(5)
 theme.screen_margin = dpi(5)

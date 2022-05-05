@@ -15,6 +15,7 @@ local function emit_info()
       else
       awful.spawn.easy_async({"mpc", "-f", "[[%artist%@@%title%@]]"},
         function(stdout)
+          stdout = string.gsub(stdout, '&', '&amp;')
           local artist = stdout:match('(.*)@@')
           local title = stdout:match('@@(.*)@')
           title = string.gsub(title, '^%s*(.-)%s*$', '%1')
