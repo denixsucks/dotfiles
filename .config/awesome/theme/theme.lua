@@ -66,7 +66,7 @@ theme.wibar_height = 25
 theme.wibar_border_width = 5
 theme.wibar_opacity = 0.8
 theme.background_opacity = 0.8
-
+theme.notification_opacity = 0.75
 
 theme.awesome_icon = theme.dir .."/icons/awesome.png"
 theme.layout_tile = theme.dir .. "/icons/tile.png"

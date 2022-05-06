@@ -60,6 +60,15 @@ awful.screen.connect_for_each_screen(function(s)
     })
   end
 
+-- Notificaitons awesomewm version 4.3 
+for _, preset in pairs(naughty.config.presets) do
+    preset.position = "top_right"
+    preset.opacity = beautiful.notification_opacity
+    preset.shape = function(cr, width, height)
+    	gears.shape.rounded_rect(cr, width, height, 100)
+    end
+end
+
   -- Create a promptbox for each screen
   -- Create an imagebox widget which will contains an icon indicating which layout we're using.
   -- We need one layoutbox per screen.
@@ -110,7 +119,7 @@ awful.screen.connect_for_each_screen(function(s)
       widgets.cpu,
       widgets.mem,
       widgets.vol,
-      widgets.bat
+      widgets.bat,
     },
   }
 end)
