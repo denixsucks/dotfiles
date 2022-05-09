@@ -63,9 +63,9 @@ awful.screen.connect_for_each_screen(function(s)
 -- Notificaitons awesomewm version 4.3 
 for _, preset in pairs(naughty.config.presets) do
     preset.position = "top_right"
-    preset.opacity = beautiful.notification_opacity
+    preset.opacity= beautiful.notification_opacity
     preset.shape = function(cr, width, height)
-    	gears.shape.rounded_rect(cr, width, height, 100)
+    	gears.shape.rounded_rect(cr, width, height, 10)
     end
 end
 
@@ -89,9 +89,7 @@ end
         opacity = beautiful.wibar_opacity,
         height = beautiful.wibar_height,
         stretch = true,
-        shape = function(cr, width, height)
-                    gears.shape.rounded_rect(cr, width, height, 20)
-                end,
+        shape = gears.shape.rounded_bar,
     })
 
   -- Add widgets to the wibox
@@ -113,7 +111,8 @@ end
       wibox.widget.systray(),
       seperator,
       widgets.kblayout,
-      widgets.temp,
+      --widgets.temp,
+      widgets.netspeed(),
       widgets.disk,
       seperator,
       widgets.cpu,
@@ -123,6 +122,9 @@ end
     },
   }
 end)
+
+
+
 -- }}}
 
 

@@ -14,6 +14,7 @@ widgets.vol = require('widgets.vol')
 widgets.bat = require('widgets.bat')
 widgets.media = require('widgets.media')
 widgets.kblayout = require('widgets.kblayout')
+widgets.netspeed = require('widgets.netspeed')
 
 -- Separators
 widgets.space = wibox.widget.textbox('<span>  </span>')
