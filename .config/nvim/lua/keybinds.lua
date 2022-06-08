@@ -83,10 +83,10 @@ map('n', ']e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>')
 -- Telescope
 nimap('<C-t>', [[<Cmd>:lua require 'telescope.builtin'.lsp_code_actions(require 'telescope.themes'.get_cursor{})<CR>]])
 map('v', '<C-t>', [[<Cmd>:lua require 'telescope.builtin'.lsp_range_code_actions(require 'telescope.themes'.get_cursor{})<CR>]])
-map('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
-map('n', '<leader>gf', '<Cmd>Telescope git_files<CR>')
-map('n', '<leader>rf', '<Cmd>Telescope oldfiles<CR>') -- recent files
-map('n', '<leader>hl', '<Cmd>Telescope highlights<CR>')
+map('n', 'ff', '<Cmd>Telescope find_files<CR>')
+map('n', 'gf', '<Cmd>Telescope git_files<CR>')
+map('n', 'rf', '<Cmd>Telescope oldfiles<CR>') -- recent files
+map('n', 'hl', '<Cmd>Telescope highlights<CR>')
 
 map('n', '<C-k>', '<Cmd>Telescope keymaps<CR>') -- look at keybinds
-map('n', '<C-f>', '<Cmd>Telescope current_buffer_fuzzy_find<CR>')
+
