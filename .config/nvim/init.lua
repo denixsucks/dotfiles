@@ -91,20 +91,3 @@ local function makeConf()
 
 	return {capabilities = capabilities}
 end
-
-local lspinst = require("nvim-lsp-installer")
-
-lspinst.on_server_ready(function(server)
-	local opts = makeConf()
-
-	if server.name == "sumneko_lua" then
-		opts.settings = lua_settings
-		opts.root_dir = function(fname)
-			local util = require 'lspconfig.util'
-			return util.find_git_ancestor(fname) or util.path.dirname(fname)
-		end
-	end
-
-	server:setup(opts)
-end)
-
