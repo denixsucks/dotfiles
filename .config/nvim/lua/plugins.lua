@@ -1,9 +1,7 @@
 return require 'packer'.startup(function(use)
 	-- Packer is stupid so i have to have it here too
 	use 'wbthomason/packer.nvim'
-
 	use 'lewis6991/impatient.nvim'
-
 	-- Buffer line
 	-- Might replace with nvim-bufferline
 	use {'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons'}
@@ -24,7 +22,6 @@ return require 'packer'.startup(function(use)
 				},
 				view = {
 					width = 24,
-					auto_resize = true
 				}
 			}
 		end
@@ -58,13 +55,14 @@ return require 'packer'.startup(function(use)
 	}
 
 	-- i have copilot pog
-	use {'github/copilot.vim',
+	--use {'github/copilot.vim',
+
 --		event = 'BufEnter',
-		config = function ()
-			vim.g.copilot_no_tab_map = true
-			vim.g.copilot_assume_mapped = true
-		end
-	}
+	--	config = function ()
+	--		vim.g.copilot_no_tab_map = true
+	--		vim.g.copilot_assume_mapped = true
+	--	end
+	--}
 
 	use 'tami5/lspsaga.nvim'
 
@@ -259,76 +257,5 @@ return require 'packer'.startup(function(use)
 			vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 		end
 	}
-	use{"catppuccin/nvim",
-		as = "catppuccin",
-		config = function()
-			require 'catppuccin'.setup {
-				transparent_background = false,
-				term_colors = false,
-				styles = {
-					comments = "italic",
-					functions = "italic",
-					keywords = "italic",
-					strings = "NONE",
-					variables = "italic",
-				},
-			integrations = {
-			treesitter = true,
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = "italic",
-					hints = "italic",
-					warnings = "italic",
-					information = "italic",
-				},
-				underlines = {
-					errors = "underline",
-					hints = "underline",
-					warnings = "underline",
-					information = "underline",
-				},
-			},
-			lsp_trouble = false,
-			cmp = true,
-			lsp_saga = false,
-			gitgutter = false,
-			gitsigns = true,
-			telescope = true,
-			nvimtree = {
-				enabled = true,
-				show_root = false,
-				transparent_panel = false,
-			},
-			neotree = {
-				enabled = false,
-				show_root = false,
-				transparent_panel = false,
-			},
-			which_key = false,
-			indent_blankline = {
-				enabled = true,
-				colored_indent_levels = false,
-			},
-			dashboard = true,
-			neogit = false,
-			vim_sneak = false,
-			fern = false,
-			barbar = false,
-			bufferline = true,
-			markdown = true,
-			lightspeed = false,
-			ts_rainbow = false,
-			hop = false,
-			notify = true,
-			telekasten = true,
-			symbols_outline = true,
-		}
-
-,	}
-		
-end
-}
-
 	
 end)

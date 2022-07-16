@@ -82,7 +82,7 @@ plugins=(
     zsh-autosuggestions
     git
     )
-
+eval $(thefuck --alias)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

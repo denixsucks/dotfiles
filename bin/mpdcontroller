@@ -1,0 +1,51 @@
+#! /usr/bin/python3
+import os
+import time
+
+def printcl(string):
+    os.system("clear")
+    print(string)
+
+def start_mpd():
+    os.system("mpd")
+    time.sleep(2)
+    os.system("ncmpcpp")
+
+def close_mpd():
+    os.system("killall mpd")
+    time.sleep(1)
+
+def generate_playlist():
+        close_mpd()
+        if os.path.exists("home/denix/.config/mpd/playlists"):
+            os.rmdir("home/denix/.config/mpd/playlists")
+            os.remove("/home/denix/.config/mpd/database")
+            os.makedirs("home/denix/.config/mpd/playlists")
+            os.system("mpgenplaylists")
+        else:
+            printcl("There's no playlists folder.")
+    
+
+while True:
+    try:
+        print("a) Start mpd services, b) Close mpd services, c) Generate Playlist Files, q) Quit.")
+        cmd = input("Selection : ")
+        if cmd == "a":
+            printcl("Starting mpd services")
+            start_mpd()
+        elif cmd == "b":
+            printcl("Closing mpd services")
+            close_mpd()
+        elif cmd == "c":
+            printcl("Generating playlist files")
+            generate_playlist()
+        elif cmd == "q":
+            printcl("Cya!")
+            time.sleep(2)
+            os.system("clear")
+            break
+        else:
+            printcl("Invalid option. Try again.")
+    
+    except IndexError:
+        printcl("Unexpected range.")

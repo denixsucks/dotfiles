@@ -52,10 +52,10 @@ _G.OpenTerm = function(name, side)
 	end
 end
 
-map('n', '<M-`>', '<Cmd>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>') -- Toggle a side terminal
-map('t', '<M-`>', '<C-\\><C-n>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>') -- Map in terminal mode
-map('n', '<M-CR>', '<Cmd>:call v:lua.OpenTerm("Terminal", v:false)<CR>')
-map('n', '<M-CR>', '<C-\\><C-n>:call v:lua.OpenTerm("Terminal", v:false)<CR>')
+map('n','<C-j>', '<Cmd>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>') -- Toggle a side terminal
+map('t', '<C-j>', '<C-\\><C-n>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>') -- Map in terminal mode
+map('n', '<C-l>', '<Cmd>:call v:lua.OpenTerm("Terminal", v:false)<CR>')
+map('n', '<C-l>', '<C-\\><C-n>:call v:lua.OpenTerm("Terminal", v:false)<CR>')
 map('t', '<Esc><Esc>', '<C-\\><C-n>')
 
 --map('v', '<C-S-Up>', '<Cmd>m \'>-2<CR>gv=gv')
@@ -85,8 +85,8 @@ nimap('<C-t>', [[<Cmd>:lua require 'telescope.builtin'.lsp_code_actions(require 
 map('v', '<C-t>', [[<Cmd>:lua require 'telescope.builtin'.lsp_range_code_actions(require 'telescope.themes'.get_cursor{})<CR>]])
 map('n', 'ff', '<Cmd>Telescope find_files<CR>')
 map('n', 'gf', '<Cmd>Telescope git_files<CR>')
-map('n', 'rf', '<Cmd>Telescope oldfiles<CR>') -- recent files
-map('n', 'hl', '<Cmd>Telescope highlights<CR>')
+map('n', '<leader>rf', '<Cmd>Telescope oldfiles<CR>') -- recent files
+map('n', '<leader>hl', '<Cmd>Telescope highlights<CR>')
 
 map('n', '<C-k>', '<Cmd>Telescope keymaps<CR>') -- look at keybinds
-
+map('n', '<C-f>', '<Cmd>Telescope current_buffer_fuzzy_find<CR>')

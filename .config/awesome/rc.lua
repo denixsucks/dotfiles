@@ -64,9 +64,9 @@ awful.screen.connect_for_each_screen(function(s)
 for _, preset in pairs(naughty.config.presets) do
     preset.position = "top_right"
     preset.opacity= beautiful.notification_opacity
-    preset.shape = function(cr, width, height)
-    	gears.shape.rounded_rect(cr, width, height, 10)
-    end
+    --preset.shape = function(cr, width, height)
+    --	gears.shape.rounded_rect(cr, width, height, 10)
+    --end
 end
 
   -- Create a promptbox for each screen
@@ -89,7 +89,7 @@ end
         opacity = beautiful.wibar_opacity,
         height = beautiful.wibar_height,
         stretch = true,
-        shape = gears.shape.rounded_bar,
+        --shape = gears.shape.rounded_bar,
     })
 
   -- Add widgets to the wibox
@@ -99,26 +99,29 @@ end
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       s.mylayoutbox,
-      s.mytaglist,
+      --s.mytaglist,
       s.mypromptbox,
-      widgets.seperator,
-      widgets.media,
+      -- widgets.seperator,
+      -- widgets.media,
     },
-      wibox.container.place(widgets.textclock, "center"),
+      wibox.container.place(s.mytaglist, "center"),
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       id = "rightwidgets",
       wibox.widget.systray(),
-      seperator,
-      widgets.kblayout,
+      --widgets.kblayout,
       --widgets.temp,
-      widgets.netspeed(),
-      widgets.disk,
-      seperator,
-      widgets.cpu,
-      widgets.mem,
+      --widgets.netspeed(),
+      --widgets.disk,
+      widgets.seperator,
+      --widgets.cpu,
+      --widgets.mem,
       widgets.vol,
+      widgets.seperator,
       widgets.bat,
+      widgets.textdate,
+	  widgets.seperator,
+      widgets.textclock,
     },
   }
 end)

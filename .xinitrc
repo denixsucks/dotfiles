@@ -4,7 +4,9 @@ userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-
+if [ -d $HOME/bin ]; then
+	export PATH="$HOME/bin:$PATH"
+fi
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
@@ -32,15 +34,24 @@ if [ -e /sys/class/power_supply/BAT0 ]; then
     export IS_LAPTOP=$true
 fi
 
-lxsession &
+export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
+# see https://unix.stackexchange.com/a/295652/332452
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+
+# see https://wiki.archlinux.org/title/GNOME/Keyring#xinitrc
+eval $(/usr/bin/gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
+# see https://github.com/NixOS/nixpkgs/issues/14966#issuecomment-520083836
+mkdir -p "$HOME"/.local/share/keyrings
+
+
 pulsemixer --unmute &
 picom -b &
-parcellite &
-unclutter &
 nm-applet &
 udiskie --smart-tray &
-gammy &
 nitrogen --restore &
 setxkbmap -layout us,tr -option grp:alt_caps_toggle -option caps:none &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 exec awesome

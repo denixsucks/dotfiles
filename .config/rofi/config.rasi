@@ -16,7 +16,7 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "catppuccin"
+//@theme "catppuccin"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
@@ -100,3 +100,10 @@ button selected {
   background-color: @bg-col;
   text-color: @blue;
 }
+//@theme "/home/denix/.local/share/rofi/themes/catppuccin.rasi"
+//@theme "/home/denix/.local/share/rofi/themes/rounded-purple-dark.rasi"
+//@theme "/home/denix/.local/share/rofi/themes/launchpad.rasi"
+//@theme "/home/denix/.local/share/rofi/themes/rounded-purple-dark.rasi"
+//@theme "/home/denix/.local/share/rofi/themes/rounded-pink-dark.rasi"
+//@theme "/home/denix/.local/share/rofi/themes/rounded-common.rasi"
+@theme "/home/denix/.local/share/rofi/themes/rounded-pink-dark.rasi"
