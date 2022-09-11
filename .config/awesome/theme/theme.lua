@@ -35,7 +35,7 @@ theme.iconFont = "Font Awesome 5 Free Regular 9"
 -- Standard Background and Foreground
 theme.bg_normal = theme.xbackground
 theme.fg_normal = theme.xforeground
-theme.bg_focus = theme.xcolor0
+theme.bg_focus = theme.xcolor
 theme.fg_focus = theme.xforeground
 theme.bg_urgent = theme.xcolor1
 theme.fg_urgent = theme.xcolor15
@@ -46,26 +46,26 @@ theme.border_normal = theme.xbackground
 theme.border_focus = theme.xcolor7
 
 -- Taglist
-theme.taglist_bg_focus = theme.xcolor15
+theme.taglist_bg_focus = theme.bg_focus
 theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_bg_empty = theme.bg_normal
-theme.taglist_fg_empty = theme.xcolor7
-theme.taglist_fg_occupied = theme.xcolor15
-theme.taglist_bg_occupied = theme.xcolor0
+theme.taglist_fg_empty = theme.fg_normal
+theme.taglist_fg_occupied = theme.xcolor14
+theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent = theme.xcolor1
 theme.taglist_fg_urgent = theme.xcolor15
 theme.taglist_spacing = dpi(0)
 
 theme.taglist_squares = "true"
 theme.titlebar_close_button = "true"
-theme.menu_height = dpi(15)
+theme.menu_height = dpi(10)
 theme.menu_width  = dpi(100)
 theme.wibar_stretch = false
-theme.wibar_width = 1000
-theme.wibar_height = 23
+theme.wibar_width = 0
+theme.wibar_height = 20
 theme.wibar_border_width = 0
-theme.wibar_opacity = 0.9
-theme.background_opacity = 0.9
+theme.wibar_opacity = 0.8
+theme.background_opacity = 0.8
 
 
 theme.awesome_icon = theme.dir .."/icons/awesome.png"
@@ -83,7 +83,7 @@ theme.layout_floating = theme.dir .. "/icons/floating.png"
 theme.layout_cornernw = theme.dir .. "/icons/cornernw.png"
 theme.layout_centerwork = theme.dir .. "/icons/centerwork.png"
 
-theme.useless_gap = dpi(5)
-theme.screen_margin = dpi(5)
+theme.useless_gap = dpi(4)
+theme.screen_margin = dpi(4)
 theme.maximized_hide_border = true
 return theme

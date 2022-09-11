@@ -1,7 +1,9 @@
 require 'plugins'
-require 'theme'
+--require 'theme'
 require 'keybinds'
 --require 'impatient'
+
+local pywal = require('pywal')
 local disabled_built_ins = {
     'netrw',
     'netrwPlugin',
@@ -22,6 +24,8 @@ local disabled_built_ins = {
     'spellfile_plugin',
 }
 
+pywal.setup()
+
 for _, plugin in pairs(disabled_built_ins) do
     vim.g['loaded_' .. plugin] = 1
 end
@@ -37,9 +41,9 @@ vim.o.showmode = false
 vim.o.expandtab = false
 vim.o.mouse = 'a'
 vim.o.completeopt = 'menu,menuone,noinsert'
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 0
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 vim.o.splitright = true
 vim.wo.number = true
 vim.opt.ci = true
@@ -82,8 +86,6 @@ local lua_settings = {
 		},
 	},
 }
-
---vim.cmd[[colorscheme catppuccin]]
 
 local function makeConf()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
