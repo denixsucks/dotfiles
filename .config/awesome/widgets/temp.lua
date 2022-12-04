@@ -13,6 +13,6 @@ awesome.connect_signal("evil::temperature", function(value)
   temp_perc.markup = string.format('%0d°C', value)
 end)
 
-temp = build_widget:new(temp_perc, '', '#fc4f8e')
+temp = build_widget:new(temp_perc)
 
 return temp.widget

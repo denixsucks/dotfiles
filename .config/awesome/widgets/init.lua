@@ -18,7 +18,7 @@ widgets.netspeed = require('widgets.netspeed')
 
 -- Separators
 widgets.space = wibox.widget.textbox('<span>  </span>')
-widgets.seperator = wibox.widget.textbox(' <span color="grey">|</span>  ')
+widgets.seperator = wibox.widget.textbox('<span color="grey">|</span>')
 
 -- Textclock
 local textclock_text = wibox.widget.textclock("%H:%M ")

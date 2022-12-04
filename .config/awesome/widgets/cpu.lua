@@ -13,6 +13,6 @@ awesome.connect_signal("evil::cpu", function(value)
   cpu_perc.markup = string.format('%02d%%', value)
 end)
 
-cpu = build_widget:new(cpu_perc, '', '#1eff8e')
+cpu = build_widget:new(cpu_perc)
 
 return cpu.widget

@@ -36,6 +36,6 @@ end)
 
 update_layout()
 
-keyboard = build_widget:new(kblayout_text, " ", "darksalmon")
+keyboard = build_widget:new(kblayout_text)
 
 return keyboard.widget

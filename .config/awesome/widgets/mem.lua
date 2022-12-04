@@ -14,6 +14,6 @@ awesome.connect_signal("evil::ram", function(used, total)
   mem_perc.markup = string.format('%0d%%', value)
 end)
 
-mem = build_widget:new(mem_perc, '', '#a753fc')
+mem = build_widget:new(mem_perc)
 
 return mem.widget

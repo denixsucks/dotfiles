@@ -5,7 +5,7 @@ local build_widget = require("widgets.build_widget")
 
 
 if os.getenv('IS_LAPTOP') then
-  local bat_perc = wibox.widget.textbox('00%')
+  local bat_perc = wibox.widget.textbox('BAT:00%')
 
   local bat_icon = ""
   local bat_icon_color = beautiful.xcolor12
@@ -25,33 +25,32 @@ if os.getenv('IS_LAPTOP') then
 
 
   awesome.connect_signal("evil::battery", function(value)
-    local bat_now = value
+ --   local bat_now = value
 
-    if bat_icon ~= "" and bat_now >= 90 then
-      bat_icon = ""
-      bat_warning = false
-    elseif bat_icon ~= "" and bat_now < 90 and bat_now >= 60 then
-      bat_icon = ""
-      bat_warning = false
-    elseif bat_icon ~= "" and bat_now < 60 and bat_now >= 20 then
-      bat_icon = ""
-      bat_warning = false
-    elseif bat_icon ~= "" and bat_now < 20 then
-      bat_icon = ""
-      bat_warning = true
-    end
+   -- if bat_icon ~= "" and bat_now >= 90 then
+   --   bat_icon = ""
+   --   bat_warning = false
+   -- elseif bat_icon ~= "" and bat_now < 90 and bat_now >= 60 then
+   --   bat_icon = ""
+   --   bat_warning = false
+   -- elseif bat_icon ~= "" and bat_now < 60 and bat_now >= 20 then
+   --   bat_icon = ""
+   --   bat_warning = false
+   -- elseif bat_icon ~= "" and bat_now < 20 then
+   --   bat_icon = ""
+   --   bat_warning = true
+   -- end
 
-    if bat_warning and bat_icon_color ~= "red" then
-      bat_icon_color = beautiful.xcolor1
-    elseif not bat_warning and bat_icon_color ~= "#0883ff" then
-      bat_icon_color = beautiful.xcolor12
-    end
+  --  if bat_warning and bat_icon_color ~= "red" then
+  --    bat_icon_color = beautiful.xcolor1
+  --  elseif not bat_warning and bat_icon_color ~= "#0883ff" then
+  --    bat_icon_color = beautiful.xcolor12
+  --  end
 
     bat_value_update(value, bat_text_color)
-    bat:UpdateIcon(bat_icon, bat_icon_color)
+  -- bat:UpdateIcon(bat_icon, bat_icon_color)
   end)
-
-  bat = build_widget:new(bat_perc, bat_icon, bat_icon_color)
+  bat = build_widget:new(bat_perc)
 
   bat.widget:buttons(awful.util.table.join(
     awful.button({}, 4, function() -- scroll up

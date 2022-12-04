@@ -55,7 +55,11 @@ globalkeys = gears.table.join(
     {description = "focus next by index", group = "client"}),
   awful.key({ modkey }, "h", function() awful.client.focus.byidx(-1) end,
     {description = "focus previous by index", group = "client"}),
-
+  -- Hide systray
+  awful.key({ modkey }, "s", function() 
+    awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+    end, {description = "Toggle systray visibility", group = "custom"}
+  ),
   -- Layout manipulation
   awful.key({ modkey, shiftkey }, "Left", function() awful.client.swap.global_bydirection("left") end,
     {description = "swap with direction left", group = "client"}),
@@ -204,9 +208,9 @@ globalkeys = gears.table.join(
     {description = "previous song", group = "controls"}),
 
   -- Screen Brightness
-  awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("light -A 5") end,
+  awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("light -A 1") end,
     {description = "Increase brightness", group = "controls"}),
-  awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("light -U 5") end,
+  awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("light -U 1") end,
     {description = "Decrease brightness", group = "controls"}),
 
   -- Screenshot

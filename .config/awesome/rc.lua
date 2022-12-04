@@ -9,11 +9,14 @@ local keys = require("keys")
 local rules = require("rules")
 local variables = require("variables")
 
+
 beautiful.init(string.format("%s/.config/awesome/theme/theme.lua", os.getenv("HOME")))
 
 require("evil")
 local widgets = require("widgets")
 awful.util.terminal = terminal
+
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -93,6 +96,8 @@ end
     })
 
   -- Add widgets to the wibox
+  s.systray = wibox.widget.systray()
+  s.systray.visible = false
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
     expand = 'none',
@@ -101,26 +106,27 @@ end
       s.mylayoutbox,
       --s.mytaglist,
       s.mypromptbox,
-      -- widgets.seperator,
-      -- widgets.media,
+      s.mytasklist,
+      --widgets.seperator,
+      --widgets.media,
     },
       wibox.container.place(s.mytaglist, "center"),
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       id = "rightwidgets",
-      wibox.widget.systray(),
-      --widgets.kblayout,
-      --widgets.temp,
+      s.systray,
+      widgets.seperator,
+     -- widgets.kblayout,
+     -- widgets.temp,
       --widgets.netspeed(),
-      --widgets.disk,
+     -- widgets.disk,
+      widgets.media,
       widgets.seperator,
-      --widgets.cpu,
-      --widgets.mem,
+      widgets.cpu,
+      widgets.mem,
       widgets.vol,
-      widgets.seperator,
       widgets.bat,
       widgets.textdate,
-	  widgets.seperator,
       widgets.textclock,
     },
   }

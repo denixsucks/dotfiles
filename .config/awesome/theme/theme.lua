@@ -25,15 +25,18 @@ theme.xcolor11    = xrdb.color11
 theme.xcolor12    = xrdb.color12    
 theme.xcolor13    = xrdb.color13    
 theme.xcolor14    = xrdb.color14    
-theme.xcolor15    = xrdb.color15    
+theme.xcolor15    = xrdb.color15
+theme.transparent = "#0000000"
 
 -- Fonts
-theme.font = "Roboto Medium 9"
-theme.taglist_font = "Roboto Bold 9"
+theme.font = "Gohu New Regular 9"
+theme.taglist_font = "Gohu New Bold 9"
 theme.iconFont = "Font Awesome 5 Free Regular 9"
 
 -- Standard Background and Foreground
 theme.bg_normal = theme.xbackground
+theme.wibar_bg = theme.transparent
+theme.tasklist_bg_normal = theme.transparent
 theme.fg_normal = theme.xforeground
 theme.bg_focus = theme.xcolor
 theme.fg_focus = theme.xforeground
@@ -46,12 +49,12 @@ theme.border_normal = theme.xbackground
 theme.border_focus = theme.xcolor7
 
 -- Taglist
-theme.taglist_bg_focus = theme.bg_focus
+theme.taglist_bg_focus = theme.transparent
 theme.taglist_fg_focus = theme.bg_normal
-theme.taglist_bg_empty = theme.bg_normal
+theme.taglist_bg_empty = theme.transparent
 theme.taglist_fg_empty = theme.fg_normal
 theme.taglist_fg_occupied = theme.xcolor14
-theme.taglist_bg_occupied = theme.bg_normal
+theme.taglist_bg_occupied = theme.transparent
 theme.taglist_bg_urgent = theme.xcolor1
 theme.taglist_fg_urgent = theme.xcolor15
 theme.taglist_spacing = dpi(0)
@@ -64,8 +67,8 @@ theme.wibar_stretch = false
 theme.wibar_width = 0
 theme.wibar_height = 20
 theme.wibar_border_width = 0
-theme.wibar_opacity = 0.8
-theme.background_opacity = 0.8
+theme.wibar_opacity = 1
+theme.background_opacity = 0.1
 
 
 theme.awesome_icon = theme.dir .."/icons/awesome.png"
@@ -83,7 +86,7 @@ theme.layout_floating = theme.dir .. "/icons/floating.png"
 theme.layout_cornernw = theme.dir .. "/icons/cornernw.png"
 theme.layout_centerwork = theme.dir .. "/icons/centerwork.png"
 
-theme.useless_gap = dpi(4)
-theme.screen_margin = dpi(4)
+theme.useless_gap = dpi(2)
+theme.screen_margin = dpi(0)
 theme.maximized_hide_border = true
 return theme
