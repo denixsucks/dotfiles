@@ -8,18 +8,22 @@ return require 'packer'.startup(function(use)
 		}
 	}
 
+	use {'romgrk/barbar.nvim',
+		requires = 'kyazdani42/nvim-web-devicons',
+	}
+
 	use 'lewis6991/impatient.nvim'
 
  	use 'kyazdani42/nvim-tree.lua'
-	
+
 	use {'windwp/nvim-autopairs',
 		config = function()
 			require 'nvim-autopairs'.setup{}
 		end
 	}
-	
+
 	use 'feline-nvim/feline.nvim'
-	
+
 	use {'andweeb/presence.nvim',
 		config = function()
 			require 'presence':setup {
@@ -39,10 +43,12 @@ return require 'packer'.startup(function(use)
 			}
 		end
 	}
-	
-	use 'rcarriga/nvim-notify'
 
-	use 'neovim/nvim-lspconfig'
+	use {'rcarriga/nvim-notify',
+		config = function()
+			vim.notify = require 'notify'
+		end
+	}
 
 	use {'folke/trouble.nvim',
   	requires = 'kyazdani42/nvim-web-devicons',

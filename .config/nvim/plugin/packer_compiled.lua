@@ -126,6 +126,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-notify"] = {
+    config = { "\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0" },
     loaded = true,
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
@@ -151,7 +152,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["presence.nvim"] = {
-    config = { "\27LJ\2\n–\3\0\0\4\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0B\0\3\1K\0\1\0\1\0\r\20git_commit_text\23Committing Changes\19workspace_text\18Workspace: %s\23file_explorer_text\16Browsing %s\21line_number_text\15Line %s/%s\17editing_text\18Working on %s\23enable_line_number\1\21debounce_timeout\3\n\14log_level\nerror\15main_image\tfile\22neovim_image_text\29The One True Text Editor\16auto_update\2\17reading_text\18Looking at %s\24plugin_manager_text\21Managing Plugins\nsetup\rpresence\frequire\0" },
+    config = { "\27LJ\2\n–\3\0\0\4\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0B\0\3\1K\0\1\0\1\0\r\19workspace_text\18Workspace: %s\22neovim_image_text\29The One True Text Editor\16auto_update\2\17reading_text\18Looking at %s\21line_number_text\15Line %s/%s\24plugin_manager_text\21Managing Plugins\20git_commit_text\23Committing Changes\23file_explorer_text\16Browsing %s\17editing_text\18Working on %s\23enable_line_number\1\21debounce_timeout\3\n\14log_level\nerror\15main_image\tfile\nsetup\rpresence\frequire\0" },
     loaded = true,
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/presence.nvim",
     url = "https://github.com/andweeb/presence.nvim"
@@ -175,8 +176,12 @@ try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B
 time([[Config for nvim-autopairs]], false)
 -- Config for: presence.nvim
 time([[Config for presence.nvim]], true)
-try_loadstring("\27LJ\2\n–\3\0\0\4\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0B\0\3\1K\0\1\0\1\0\r\20git_commit_text\23Committing Changes\19workspace_text\18Workspace: %s\23file_explorer_text\16Browsing %s\21line_number_text\15Line %s/%s\17editing_text\18Working on %s\23enable_line_number\1\21debounce_timeout\3\n\14log_level\nerror\15main_image\tfile\22neovim_image_text\29The One True Text Editor\16auto_update\2\17reading_text\18Looking at %s\24plugin_manager_text\21Managing Plugins\nsetup\rpresence\frequire\0", "config", "presence.nvim")
+try_loadstring("\27LJ\2\n–\3\0\0\4\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0B\0\3\1K\0\1\0\1\0\r\19workspace_text\18Workspace: %s\22neovim_image_text\29The One True Text Editor\16auto_update\2\17reading_text\18Looking at %s\21line_number_text\15Line %s/%s\24plugin_manager_text\21Managing Plugins\20git_commit_text\23Committing Changes\23file_explorer_text\16Browsing %s\17editing_text\18Working on %s\23enable_line_number\1\21debounce_timeout\3\n\14log_level\nerror\15main_image\tfile\nsetup\rpresence\frequire\0", "config", "presence.nvim")
 time([[Config for presence.nvim]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
+time([[Config for nvim-notify]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
