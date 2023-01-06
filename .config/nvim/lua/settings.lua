@@ -1,21 +1,21 @@
 ------------------------------------------------
 -- Vim Settings
-vim.o.hidden = true
-vim.o.cursorline = true
+vim.opt.hidden = true
+vim.opt.cursorline = true
 vim.preserveindent = true
-vim.o.termguicolors = true
-vim.o.wrap = false
-vim.o.ruler = false
-vim.o.showmode = false
-vim.o.expandtab = false
-vim.o.mouse = 'a'
-vim.o.completeopt = 'menu,menuone,noinsert'
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.splitright = true
-vim.o.foldenable = true
-vim.o.foldmethod = 'indent'
+vim.opt.wrap = false
+vim.opt.termguicolors=true
+vim.opt.ruler = true
+vim.opt.showmode = false
+vim.opt.expandtab = false
+vim.opt.mouse = 'a'
+vim.opt.completeopt = 'menu,menuone,noinsert'
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.splitright = true
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'indent'
 vim.wo.number = true
 vim.opt.ci = true
 vim.opt.undofile = true

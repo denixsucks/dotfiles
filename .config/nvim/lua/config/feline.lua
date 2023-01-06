@@ -1,22 +1,22 @@
 -- taken and edited from here: https://github.com/Hitesh-Aggarwal/feline_one_monokai.nvim/blob/2ff798d4d0435d2145593587dc93a70e72a6d279/plugin/feline_one_monokai.lua
-local tc = require 'config.themecolor'
+local color = require('xresources')
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
 	return
 end
 
 local themecolor = {
-	fg = '#' .. tc.fg,
-	bg = '#' .. tc.bgli,
-	green = '#' .. tc.green,
-	yellow = '#' .. tc.yellow,
-	purple = '#' .. tc.magenta,
-	orange = '#' .. tc.yellow,
-	peanut = '#' .. tc.yellow,
-	red = '#' .. tc.red,
-	aqua = '#' .. tc.cyan,
-	darkblue = '#' .. tc.bgvli,
-	dark_red = '#' .. tc.red,
+	fg = color.fg,
+	bg = color.bg,
+	green = color.green,
+	yellow = color.yellow,
+	purple = color.purple,
+	orange = color.cyan,
+	peanut = color.cyan,
+	red = color.red,
+	aqua = color.cyan,
+	darkblue = color.bg,
+	dark_red = color.light_black,
 }
 
 local vi_mode_colors = {
@@ -227,7 +227,6 @@ local components = {
 		right,
 	},
 }
-
 
 feline.setup({
 	components = components,

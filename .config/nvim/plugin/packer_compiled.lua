@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/home/denix/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -115,6 +120,11 @@ _G.packer_plugins = {
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/home/denix/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
+  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -152,7 +162,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["presence.nvim"] = {
-    config = { "\27LJ\2\n–\3\0\0\4\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0B\0\3\1K\0\1\0\1\0\r\19workspace_text\18Workspace: %s\22neovim_image_text\29The One True Text Editor\16auto_update\2\17reading_text\18Looking at %s\21line_number_text\15Line %s/%s\24plugin_manager_text\21Managing Plugins\20git_commit_text\23Committing Changes\23file_explorer_text\16Browsing %s\17editing_text\18Working on %s\23enable_line_number\1\21debounce_timeout\3\n\14log_level\nerror\15main_image\tfile\nsetup\rpresence\frequire\0" },
+    config = { "\27LJ\2\n©\3\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0004\4\0\0=\4\4\3B\0\3\1K\0\1\0\16file_assets\1\0\14\19workspace_text\18Working on %s\23file_explorer_text\16Browsing %s\21line_number_text\22Line %s out of %s\21debounce_timeout\3\n\23enable_line_number\1\fbuttons\2\14show_time\2\16auto_update\2\17editing_text\15Editing %s\22neovim_image_text\29The One True Text Editor\24plugin_manager_text\21Managing plugins\17reading_text\15Reading %s\15main_image\tfile\14client_id\023793271441293967371\nsetup\rpresence\frequire\0" },
     loaded = true,
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/presence.nvim",
     url = "https://github.com/andweeb/presence.nvim"
@@ -166,22 +176,37 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/denix/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
+  },
+  ["vim-godot"] = {
+    loaded = true,
+    path = "/home/denix/.local/share/nvim/site/pack/packer/start/vim-godot",
+    url = "https://github.com/habamax/vim-godot"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/home/denix/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["xresources-nvim"] = {
+    loaded = true,
+    path = "/home/denix/.local/share/nvim/site/pack/packer/start/xresources-nvim",
+    url = "https://github.com/nekonako/xresources-nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: presence.nvim
-time([[Config for presence.nvim]], true)
-try_loadstring("\27LJ\2\n–\3\0\0\4\0\4\0\b6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0B\0\3\1K\0\1\0\1\0\r\19workspace_text\18Workspace: %s\22neovim_image_text\29The One True Text Editor\16auto_update\2\17reading_text\18Looking at %s\21line_number_text\15Line %s/%s\24plugin_manager_text\21Managing Plugins\20git_commit_text\23Committing Changes\23file_explorer_text\16Browsing %s\17editing_text\18Working on %s\23enable_line_number\1\21debounce_timeout\3\n\14log_level\nerror\15main_image\tfile\nsetup\rpresence\frequire\0", "config", "presence.nvim")
-time([[Config for presence.nvim]], false)
 -- Config for: nvim-notify
 time([[Config for nvim-notify]], true)
 try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
 time([[Config for nvim-notify]], false)
+-- Config for: presence.nvim
+time([[Config for presence.nvim]], true)
+try_loadstring("\27LJ\2\n©\3\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0005\3\3\0004\4\0\0=\4\4\3B\0\3\1K\0\1\0\16file_assets\1\0\14\19workspace_text\18Working on %s\23file_explorer_text\16Browsing %s\21line_number_text\22Line %s out of %s\21debounce_timeout\3\n\23enable_line_number\1\fbuttons\2\14show_time\2\16auto_update\2\17editing_text\15Editing %s\22neovim_image_text\29The One True Text Editor\24plugin_manager_text\21Managing plugins\17reading_text\15Reading %s\15main_image\tfile\14client_id\023793271441293967371\nsetup\rpresence\frequire\0", "config", "presence.nvim")
+time([[Config for presence.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

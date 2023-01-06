@@ -10,7 +10,7 @@ local cpu_perc = wibox.widget{
 }
 
 awesome.connect_signal("evil::cpu", function(value)
-  cpu_perc.markup = string.format('%02d%%', value)
+  cpu_perc.markup = string.format('CPU:%s', value) .. '%'
 end)
 
 cpu = build_widget:new(cpu_perc)

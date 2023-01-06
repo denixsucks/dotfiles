@@ -11,7 +11,7 @@ local mem_perc = wibox.widget{
 
 awesome.connect_signal("evil::ram", function(used, total)
   local value = math.floor((used / total) * 100)
-  mem_perc.markup = string.format('%0d%%', value)
+  mem_perc.markup = string.format('MEM:%s', value) .. '%'
 end)
 
 mem = build_widget:new(mem_perc)

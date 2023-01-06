@@ -1,43 +1,36 @@
-window:
-  padding:
-    x: 1
-    y: 1
-  opacity: 0.75
-
+colors:
+  bright:
+    black: '#626880'
+    blue: '#8CAAEE'
+    cyan: '#81C8BE'
+    green: '#A6D189'
+    magenta: '#F4B8E4'
+    red: '#E78284'
+    white: '#A5ADCE'
+    yellow: '#E5C890'
+  normal:
+    black: '#51576D'
+    blue: '#8CAAEE'
+    cyan: '#81C8BE'
+    green: '#A6D189'
+    magenta: '#F4B8E4'
+    red: '#E78284'
+    white: '#B5BFE2'
+    yellow: '#E5C890'
+  primary:
+    background: '#303446'
+    foreground: '#C6D0F5'
 font:
   normal:
     family: Gohu New
   size: 7
-
-
-
+key_bindings:
+- action: ToggleFullscreen
+  key: F11
 shell:
   program: /bin/zsh
-
-key_bindings:
-  - { key: F11, action: ToggleFullscreen }
-colors:
-  primary:
-    background: "#1E1E2E"
-    foreground: "#fffefe"
-  cursor:
-    text: "#151621"
-    cursor: "#fffefe"
-  normal:
-    black: "#151621"
-    red: "#ff9da3"
-    green: "#d1f1a9"
-    yellow: "#ffeead"
-    blue: "#bbdaff"
-    magenta: "#ebbbff"
-    cyan: "#99ffff"
-    white: "#fffefe"
-  bright:
-    black: "#151621"
-    red: "#ff9da3"
-    green: "#d1f1a9"
-    yellow: "#ffeead"
-    blue: "#bbdaff"
-    magenta: "#ebbbff"
-    cyan: "#99ffff"
-    white: "#fffefe"
+window:
+  opacity: 0.75
+  padding:
+    x: 1
+    y: 1

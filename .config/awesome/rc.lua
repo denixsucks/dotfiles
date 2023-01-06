@@ -72,64 +72,64 @@ for _, preset in pairs(naughty.config.presets) do
     --end
 end
 
-  -- Create a promptbox for each screen
-  -- Create an imagebox widget which will contains an icon indicating which layout we're using.
-  -- We need one layoutbox per screen.
-  s.mylayoutbox = awful.widget.layoutbox(s)
-  s.mylayoutbox:buttons(gears.table.join(
-    awful.button({}, 2, function() awful.layout.set( awful.layout.layouts[1] ) end),
-    awful.button({}, 4, function() awful.layout.inc( 1) end),
-    awful.button({}, 5, function() awful.layout.inc(-1) end)))
-  -- Create a taglist widget
-  s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
+-- Create a promptbox for each screen
+-- Create an imagebox widget which will contains an icon indicating which layout we're using.
+-- We need one layoutbox per screen.
+s.mylayoutbox = awful.widget.layoutbox(s)
+s.mylayoutbox:buttons(gears.table.join(
+	awful.button({}, 2, function() awful.layout.set( awful.layout.layouts[1] ) end),
+  awful.button({}, 4, function() awful.layout.inc( 1) end),
+  awful.button({}, 5, function() awful.layout.inc(-1) end)))
+-- Create a taglist widget
+s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
 
-  -- Create a tasklist widget
-  s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused)
+-- Create a tasklist widget
+s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused)
 
-  -- Create the wibox
-  s.mywibox = awful.wibar({ position = "top",
-        screen = s, 
-        opacity = beautiful.wibar_opacity,
-        height = beautiful.wibar_height,
-        stretch = true,
-        --shape = gears.shape.rounded_bar,
-    })
+-- Create the wibox
+s.mywibox = awful.wibar({ position = "top",
+  screen = s,
+  opacity = beautiful.wibar_opacity,
+  height = beautiful.wibar_height,
+	stretch = true,
+  --shape = gears.shape.rounded_bar,
+})
 
-  -- Add widgets to the wibox
-  s.systray = wibox.widget.systray()
-  s.systray.visible = false
-  s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
-    expand = 'none',
-    { -- Left widgets
-      layout = wibox.layout.fixed.horizontal,
-      s.mylayoutbox,
-      --s.mytaglist,
-      s.mypromptbox,
-      s.mytasklist,
-      --widgets.seperator,
-      --widgets.media,
-    },
-      wibox.container.place(s.mytaglist, "center"),
-    { -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
-      id = "rightwidgets",
-      s.systray,
-      widgets.seperator,
-     -- widgets.kblayout,
-     -- widgets.temp,
-      --widgets.netspeed(),
-     -- widgets.disk,
-      widgets.media,
-      widgets.seperator,
-      widgets.cpu,
-      widgets.mem,
-      widgets.vol,
-      widgets.bat,
-      widgets.textdate,
-      widgets.textclock,
-    },
-  }
+s.systray = wibox.widget.systray()
+s.systray.visible = false
+s.mywibox:setup {
+	layout = wibox.layout.align.horizontal,
+  expand = 'none',
+  { -- Left widgets
+    layout = wibox.layout.fixed.horizontal,
+    s.mylayoutbox,
+    --s.mytaglist,
+    s.mypromptbox,
+    s.mytasklist,
+    --widgets.seperator,
+    --widgets.media,
+  },
+    wibox.container.place(s.mytaglist, "center"),
+  { -- Right widgets
+		layout = wibox.layout.fixed.horizontal,
+    id = "rightwidgets",
+    s.systray,
+    widgets.seperator,
+    -- widgets.kblayout,
+    -- widgets.temp,
+    --widgets.netspeed(),
+    -- widgets.disk,
+    widgets.media,
+    widgets.seperator,
+    widgets.cpu,
+    widgets.mem,
+    widgets.vol,
+    widgets.bat,
+    widgets.textdate,
+    widgets.textclock,
+  },
+}
+
 end)
 
 

@@ -89,7 +89,7 @@ globalkeys = gears.table.join(
   awful.key({ modkey, shiftkey }, "w", function() awful.spawn(browser2) end,
     {description = "open " .. browser2, group = "apps"}),
 
-  awful.key({ modkey }, "r", function() awful.spawn(file1) end,
+  awful.key({ modkey }, "d", function() awful.spawn(file1) end,
     {description = "open main file manager", group = "apps"}),
   awful.key({ modkey, shiftkey }, "r", function() awful.spawn(file2) end,
     {description = "open secondary file manager", group = "apps"}),
@@ -138,7 +138,7 @@ globalkeys = gears.table.join(
     {description = "restore minimized", group = "client"}),
 
   -- Menubar
-  awful.key({ altkey }, "space", function() awful.spawn.with_shell("rofi -show combi -combi-modi \"drun,run\"") end,
+  awful.key({ modkey }, "r", function() awful.spawn.with_shell("rofi -show combi -combi-modi \"drun,run\" -show-icons") end,
     {description = "show the menubar", group = "launcher"}),
 
   -- Action Menus

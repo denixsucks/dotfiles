@@ -1,0 +1,45 @@
+*foreground:        #e9e4e4
+*background:        #100e10
+*.foreground:       #e9e4e4
+*.background:       #100e10
+
+! Colors 0-15.
+*.color0: #100e10
+*color0:  #100e10
+*.color1: #fa00e1
+*color1:  #fa00e1
+*.color2: #fe0f86
+*color2:  #fe0f86
+*.color3: #ff438e
+*color3:  #ff438e
+*.color4: #ff7b8e
+*color4:  #ff7b8e
+*.color5: #ff86aa
+*color5:  #ff86aa
+*.color6: #ffa7e2
+*color6:  #ffa7e2
+*.color7: #e9e4e4
+*color7:  #e9e4e4
+*.color8: #a39f9f
+*color8:  #a39f9f
+*.color9: #fa00e1
+*color9:  #fa00e1
+*.color10: #fe0f86
+*color10:  #fe0f86
+*.color11: #ff438e
+*color11:  #ff438e
+*.color12: #ff7b8e
+*color12:  #ff7b8e
+*.color13: #ff86aa
+*color13:  #ff86aa
+*.color14: #ffa7e2
+*color14:  #ffa7e2
+*.color15: #e9e4e4
+*color15:  #e9e4e4
+
+! Black color that will not be affected by bold highlighting.
+*.color66: #100e10
+*color66:  #100e10
+
+! Set depth to make transparency work.
+URxvt*depth: 32

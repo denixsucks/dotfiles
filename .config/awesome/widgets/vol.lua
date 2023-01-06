@@ -27,7 +27,7 @@ awesome.connect_signal("evil::volume", function(volume, muted)
   --end
   if not muted then
   --  vol_icon_color = "#ff8e1e"
-    vol_perc.markup = string.format("%02d%%", cur_vol)
+    vol_perc.markup = string.format("VOL:%s", cur_vol) .. '%'
   --  vol:UpdateIcon(vol_icon, vol_icon_color)
   else
   --  vol_icon_color = "red"
