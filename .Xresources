@@ -1,1 +1,2 @@
-#include "/home/denix/.cache/wal/colors.Xresources"
+#include "/home/denix/themes/colors/cat/frappe.Xresources"
+Xcursor.theme: miku-cursor-theme

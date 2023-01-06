@@ -49,7 +49,7 @@ mkdir -p "$HOME"/.local/share/keyrings
 /usr/bin/pipewire-pulse &
 /usr/bin/wireplumber &
 pulsemixer --unmute &
-picom -b &
+picom -b & # --experimental-backends for blur
 nm-applet &
 udiskie --smart-tray &
 nitrogen --restore &
