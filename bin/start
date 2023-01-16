@@ -1,2 +1,25 @@
-#!/bin/sh
+#!/bin/bash
+# check if theres two monitors
+# if there's two monitors it should be start in nvidia-prime-select nvidia mode
+# monitor 1 = nvidia, monitor 2 = prime
+# if there's one monitor start in prime laptop monitor
+
+MONITOR_COUNT=$(xrandr | grep -sw 'connected' | wc -l)
+
+if [ $MONITOR_COUNT -eq 2 ]
+then
+	sudo nvidia-prime-select nvidia-prime-select
+	sudo xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	echo "Monitor Count is $MONITOR_COUNT and Device is in 2 MONITOR mode"
+
+elif [ $MONITOR_COUNT -eq 1 ]
+then
+	sudo rm -rf /etc/X11/xorg.conf # remove Xorg
+	echo "Monitor count is $MONITOR_COUNT and Device is in LAPTOP mode"
+
+else
+	echo "bruh, something doesnt work..."
+fi
+
+# init this bruv
 startx ~/.xinitrc nacho
