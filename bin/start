@@ -20,7 +20,7 @@ startx ~/.xinitrc nacho
 
 if ["$1" = n]
 then
-	xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	sudo sh ~/.screenlayout/nvidia.sh
 fi
 
 exit 0
