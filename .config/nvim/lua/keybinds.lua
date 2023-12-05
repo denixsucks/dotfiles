@@ -2,10 +2,12 @@
 -- Vim Keymap Mappings
 local normalModeKeymaps = {
 	['tf'] = '<cmd>Telescope find_files<CR>', -- find files
-	['tr'] = '<cmd>Telescope oldfiles<CR>',		-- recent files
+	['to'] = '<cmd>Telescope oldfiles<CR>',		-- recent files
 	['<C-k>'] = '<Cmd>Telescope keymaps<CR>',
 	['<C-x>'] = '<Cmd>TroubleToggle<CR>',
 	['<C-b>'] = '<Cmd>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>',
+	['tt'] = '<Cmd>BufferNext<CR>',
+	['tr'] = '<Cmd>BufferPrevious<CR>'
 }
 
 local insertModeKeymaps = {

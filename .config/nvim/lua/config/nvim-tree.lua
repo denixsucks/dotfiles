@@ -1,7 +1,5 @@
 local nvimtree = require 'nvim-tree'
 nvimtree.setup({
-
-	open_on_setup = true,
 	update_cwd = true,
 	diagnostics = {
 		enable = true,

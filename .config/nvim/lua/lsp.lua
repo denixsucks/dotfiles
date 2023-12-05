@@ -1,41 +1,23 @@
-local lsp_installer = require'nvim-lsp-installer'
-local lsp_installer_servers = require'nvim-lsp-installer.servers'
+require("mason").setup()
+require("mason-lspconfig").setup()
 
--- install LSP servers
-local function installServer(name)
-    local ok, server = lsp_installer_servers.get_server(name)
-    if ok then
-        if not server:is_installed() then
-            server:install()
-        end
-    end
+local omnisharp_server_location = 'C:\\DevTools\\omnisharp\\OmniSharp.exe'
+
+local function join_paths(...)
+	local path_sep = on_windows and "\\" or "/"
+	local result = table.concat({ ... }, path_sep)
+	return result
 end
 
-local function installServers(names)
-    for _,name in pairs(names) do
-        installServer(name)
-    end
-end
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.lua_ls.setup{}
+require'lspconfig'.pyright.setup{}
 
--- find a list of available ones here: https://github.com/williamboman/nvim-lsp-installer
-installServers({'rust_analyzer', 'clangd', 'sumneko_lua', 'pyright', 'jsonls', 'cmake', 'gopls', 'bashls', 'omnisharp'})
-
--- setup installed servers
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-    if server.name == 'sumneko_lua' then
-        opts = require'config.lsp-server.lua'
-    end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md
-    server:setup(opts)
-end)
+require('lspconfig').omnisharp.setup{
+	cmd = { omnisharp_server_location, "--languageserver" , "--hostPID", tostring(pid) },
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 -- diagnostic symbols
 local signs = { Error = "", Warn = "", Hint = "", Info =  ""}
@@ -44,7 +26,6 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- completion symbols
 vim.lsp.protocol.CompletionItemKind = {
     "   (Text) ",
     "   (Method)",
