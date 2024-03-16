@@ -11,6 +11,6 @@ nvimtree.setup({
 		custom = {'.git', 'node_modules'}
 	},
 	view = {
-		width = 24,
+		width = 20,
 	}
 })

@@ -35,6 +35,7 @@ if [ -e /sys/class/power_supply/BAT0 ]; then
 fi
 
 export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
+
 # see https://unix.stackexchange.com/a/295652/332452
 # source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
@@ -48,6 +49,7 @@ mkdir -p "$HOME"/.local/share/keyrings
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &
 /usr/bin/wireplumber &
+flameshot &
 pulsemixer --unmute &
 picom -b & # --experimental-backends for blur
 nm-applet &
@@ -55,8 +57,5 @@ udiskie --smart-tray &
 nitrogen --restore &
 setxkbmap -layout us,tr -option grp:alt_caps_toggle -option caps:none &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-
-
 
 exec awesome

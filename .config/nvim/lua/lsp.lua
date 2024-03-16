@@ -1,23 +1,26 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
-local omnisharp_server_location = 'C:\\DevTools\\omnisharp\\OmniSharp.exe'
-
-local function join_paths(...)
-	local path_sep = on_windows and "\\" or "/"
-	local result = table.concat({ ... }, path_sep)
-	return result
-end
+local util = require "lspconfig/util"
 
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.lua_ls.setup{}
 require'lspconfig'.pyright.setup{}
 
-require('lspconfig').omnisharp.setup{
-	cmd = { omnisharp_server_location, "--languageserver" , "--hostPID", tostring(pid) },
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+require'lspconfig'.rust_analyzer.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = {"rust"},
+	root_dir = util.root_pattern("Cargo.toml"),
+	settings = {
+		['rust_analyzer'] = {
+			cargo = {
+				allFeatures = true,
+			}
+		}
+	}
+})
+
 
 -- diagnostic symbols
 local signs = { Error = "", Warn = "", Hint = "", Info =  ""}
@@ -25,6 +28,37 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+vim.api.nvim_create_user_command("DiagnosticToggle", function()
+		local config = vim.diagnostic.config
+		local vt = config().virtual_text
+		config {
+			virtual_text = not vt,
+			underline = not vt,
+			signs = not vt,
+		}
+end, {desc = "toggle diagnostic"})
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+
+vim.opt.shortmess = vim.opt.shortmess + {c = true}
+vim.api.nvim_set_option('updatetime', 300)
+
+vim.cmd([[set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
 
 vim.lsp.protocol.CompletionItemKind = {
     "   (Text) ",

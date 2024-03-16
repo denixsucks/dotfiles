@@ -1,5 +1,5 @@
-------------------------------------------------
 -- Vim Keymap Mappings
+
 local normalModeKeymaps = {
 	['tf'] = '<cmd>Telescope find_files<CR>', -- find files
 	['to'] = '<cmd>Telescope oldfiles<CR>',		-- recent files
@@ -7,8 +7,11 @@ local normalModeKeymaps = {
 	['<C-x>'] = '<Cmd>TroubleToggle<CR>',
 	['<C-b>'] = '<Cmd>:call v:lua.OpenTerm("TerminalSide", v:true)<CR>',
 	['tt'] = '<Cmd>BufferNext<CR>',
-	['tr'] = '<Cmd>BufferPrevious<CR>'
+	['tr'] = '<Cmd>BufferPrevious<CR>',
 }
+
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 local insertModeKeymaps = {
 }

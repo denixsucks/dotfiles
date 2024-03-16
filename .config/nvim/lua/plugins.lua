@@ -6,9 +6,6 @@ return require 'packer'.startup(function(use)
       'nvim-lua/plenary.nvim'
     }
   }
-  use { 'romgrk/barbar.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-  }
 
   use {
     'linrongbin16/lsp-progress.nvim',
@@ -18,33 +15,41 @@ return require 'packer'.startup(function(use)
     end
   }
 
-  use 'lewis6991/impatient.nvim'
+	use {'nyoom-engineering/oxocarbon.nvim'}
   use 'kyazdani42/nvim-tree.lua'
+  use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+
   use 'windwp/nvim-autopairs'
 
-  use({
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    -- config = function()
-      -- require('config.galaxyline')
-    -- end,
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-  })
-
-  use 'andweeb/presence.nvim'
   use 'rcarriga/nvim-notify'
   use { 'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
   }
-  use 'folke/tokyonight.nvim'
+
+
+
   use 'terrortylor/nvim-comment'
   use {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   }
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+
+  use 'simrat39/rust-tools.nvim'
+	use 'hrsh7th/nvim-cmp'
+  -- LSP completion source:
+ 	use 'hrsh7th/cmp-nvim-lsp'
+
+  -- Useful completion sources:
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'hrsh7th/cmp-vsnip'                             
+  use 'hrsh7th/cmp-path'                              
+  use 'hrsh7th/cmp-buffer'                            
+	use 'hrsh7th/vim-vsnip'
+	
+
+
 end)

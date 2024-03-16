@@ -6,6 +6,8 @@ vim.preserveindent = true
 vim.opt.wrap = false
 vim.opt.termguicolors=true
 vim.opt.ruler = true
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.opt.showmode = false
 vim.opt.expandtab = false
 vim.opt.mouse = 'a'
@@ -14,14 +16,22 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.splitright = true
-vim.opt.foldenable = true
-vim.opt.foldmethod = 'indent'
-vim.wo.number = true
 vim.opt.ci = true
 vim.opt.undofile = true
 vim.opt.guicursor:append('i:blinkwait700-blinkon400-blinkoff250')
-vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber foldcolumn=3'
 vim.opt.laststatus = 3
+
+vim.wo.number = true
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+vim.opt.background = "dark"
+vim.cmd("colorscheme oxocarbon")
+
 ------------------------------------------------
 -- Disable unwanted built-in plugins
 local disabledBuiltInPlugins = {

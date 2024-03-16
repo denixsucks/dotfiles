@@ -1,4 +1,4 @@
-require('impatient')	-- for improving startup time
+vim.loader.enable()
 require 'settings'
 require 'config'
 require 'keybinds'

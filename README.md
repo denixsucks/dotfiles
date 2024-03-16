@@ -1,3 +1,8 @@
 # dotfiles
-## NOTE : Since I switched to hyprland, this repo is pretty much unmaintained. :( 
-version 2.0.1
+### NOTE : I'm back to awesomeWM. Apparently hyprland sucks for now. So I still maintain this repo X).
+- Neovim
+- AwesomeWM
+- Alacritty / Kitty
+- X11
+- Picom
+version 2.0.2

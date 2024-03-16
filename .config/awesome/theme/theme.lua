@@ -29,9 +29,9 @@ theme.xcolor15    = xrdb.color15
 theme.transparent = "#0000000"
 
 -- Fonts
-theme.font = "Gohu New Regular 9"
-theme.taglist_font = "Gohu New Bold 9"
-theme.iconFont = "Font Awesome 5 Free Regular 9"
+theme.font = "BigBlueTermPlus Nerd Font Regular 9"
+theme.taglist_font = "BigBlueTermPlus Nerd Font Bold 9"
+theme.iconFont = "BigBlueTermPlus Nerd Font Regular 9"
 
 -- Standard Background and Foreground
 theme.bg_normal = theme.xbackground
