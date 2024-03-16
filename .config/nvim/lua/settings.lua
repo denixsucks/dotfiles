@@ -24,13 +24,18 @@ vim.opt.laststatus = 3
 vim.wo.number = true
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldcolumn = '1'
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
 vim.opt.background = "dark"
-vim.cmd("colorscheme oxocarbon")
+
+if vim.loop.os_uname().sysname == 'Linux' then
+	vim.cmd("colorscheme xresources")
+else
+	vim.cmd("colorscheme oxocarbon")
+end
 
 ------------------------------------------------
 -- Disable unwanted built-in plugins

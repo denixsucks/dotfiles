@@ -15,7 +15,6 @@ return require 'packer'.startup(function(use)
     end
   }
 
-	use {'nyoom-engineering/oxocarbon.nvim'}
   use 'kyazdani42/nvim-tree.lua'
   use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
@@ -28,9 +27,13 @@ return require 'packer'.startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons',
   }
 
+	if vim.loop.os_uname().sysname == 'Linux' then
+		use 'nekonako/xresources-nvim'
+	else
+		use 'nyoom-engineering/oxocarbon.nvim'
+	end
 
-
-  use 'terrortylor/nvim-comment'
+	use 'terrortylor/nvim-comment'
   use {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -39,17 +42,14 @@ return require 'packer'.startup(function(use)
 
   use 'simrat39/rust-tools.nvim'
 	use 'hrsh7th/nvim-cmp'
-  -- LSP completion source:
  	use 'hrsh7th/cmp-nvim-lsp'
 
-  -- Useful completion sources:
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'hrsh7th/cmp-vsnip'                             
-  use 'hrsh7th/cmp-path'                              
-  use 'hrsh7th/cmp-buffer'                            
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/vim-vsnip'
-	
 
 
 end)
