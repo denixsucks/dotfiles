@@ -1,9 +1,9 @@
 require 'config.nvim-tree'
 require 'config.nvim-treesitter'
 require 'config.cmp'
--- require 'config.galaxyline'
+require 'config.lualine'
 require 'config.cmp'
--- require 'config.presence'
+require 'config.presence'
 
 -- init some setups without config
 require('nvim_comment').setup()
@@ -29,13 +29,11 @@ capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true
 }
 
-
 local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
 for _, ls in ipairs(language_servers) do
 	require('lspconfig')[ls].setup({
 	  capabilities = capabilities
 	})
 end
-
 
 require('ufo').setup()

@@ -3,10 +3,10 @@ require("mason-lspconfig").setup()
 
 local util = require "lspconfig/util"
 
+-- LSP Languages
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.lua_ls.setup{}
 require'lspconfig'.pyright.setup{}
-
 require'lspconfig'.rust_analyzer.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -20,7 +20,6 @@ require'lspconfig'.rust_analyzer.setup({
 		}
 	}
 })
-
 
 -- diagnostic symbols
 local signs = { Error = "", Warn = "", Hint = "", Info =  ""}

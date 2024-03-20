@@ -15,13 +15,17 @@ return require 'packer'.startup(function(use)
     end
   }
 
+  use 'andweeb/presence.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-
-
   use 'windwp/nvim-autopairs'
-
+	use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
+	use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+	use 'romgrk/barbar.nvim'
+	use { 'nvim-lualine/lualine.nvim',
+	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
   use 'rcarriga/nvim-notify'
   use { 'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -40,10 +44,9 @@ return require 'packer'.startup(function(use)
     'neovim/nvim-lspconfig',
   }
 
-  use 'simrat39/rust-tools.nvim'
 	use 'hrsh7th/nvim-cmp'
  	use 'hrsh7th/cmp-nvim-lsp'
-
+  use 'simrat39/rust-tools.nvim'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'hrsh7th/cmp-vsnip'
