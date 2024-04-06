@@ -4,6 +4,7 @@ require("mason-lspconfig").setup()
 local util = require "lspconfig/util"
 
 -- LSP Languages
+require'lspconfig'.gopls.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.lua_ls.setup{}
 require'lspconfig'.pyright.setup{}

@@ -1,36 +1,28 @@
-# Oxocarbon Color Scheme for Alacritty in TOML format
-
-# Primary colors
+# BEGIN XTA
 [colors.primary]
 background = "#161616"
-foreground = "#ffffff"
+foreground = "#F2F4F8"
 
-# Search colors
-[colors.search.matches]
-foreground = "CellBackground"
-background = "#ee5396"
-
-# Normal colors
 [colors.normal]
-black = "#262626"
-magenta = "#ff7eb6"
-green = "#42be65"
-yellow = "#ffe97b"
-blue = "#33b1ff"
-red = "#ee5396"
-cyan = "#3ddbd9"
-white = "#dde1e6"
+black = "#161616"
+red = "#3DDBD9"
+green = "#33B1FF"
+yellow = "#EE5396"
+blue = "#42BE65"
+magenta = "#BE95FF"
+cyan = "#FF7EB6"
+white = "#F2F4F8"
 
-# Bright colors
 [colors.bright]
-black = "#393939"
-magenta = "#ff7eb6"
-green = "#42be65"
-yellow = "#ffe97b"
-blue = "#33b1ff"
-red = "#ee5396"
-cyan = "#3ddbd9"
-white = "#ffffff"
+black = "#525252"
+red = "#78A9FF"
+green = "#262626"
+yellow = "#393939"
+blue = "#DDE1E6"
+magenta = "#FFFFFF"
+cyan = "#82CFFF"
+white = "#08BDBA"
+# END XTA
 
 [env]
 TERM = "xterm-256color"
@@ -167,7 +159,7 @@ multiplier = 3
 
 [window]
 dynamic_padding = true
-opacity = 0.98
+opacity = 0.95
 title = "alacritty"
 startup_mode = "Windowed"
 
@@ -178,3 +170,4 @@ instance = "Alacritty"
 [window.padding]
 x = 0
 y = 0
+# BEGIN XTA

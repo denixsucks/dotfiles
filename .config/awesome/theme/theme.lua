@@ -35,7 +35,7 @@ theme.iconFont = "BigBlueTermPlus Nerd Font Regular 9"
 
 -- Standard Background and Foreground
 theme.bg_normal = theme.xbackground
-theme.wibar_bg = theme.xbackground .. "96" -- opacity
+theme.wibar_bg = theme.xbackground .. "e6" -- opacity
 theme.tasklist_bg_normal = theme.transparent
 theme.fg_normal = theme.xforeground
 theme.bg_focus = theme.xcolor

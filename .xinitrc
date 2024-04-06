@@ -1,5 +1,5 @@
 #!/bin/sh
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt6ct"
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -54,6 +54,7 @@ pulsemixer --unmute &
 picom -b & # --experimental-backends for blur
 nm-applet &
 udiskie --smart-tray &
+jamesdsp &
 nitrogen --restore &
 setxkbmap -layout us,tr -option grp:alt_caps_toggle -option caps:none &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

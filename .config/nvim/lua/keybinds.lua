@@ -21,7 +21,7 @@ local visualModeKeymaps = {
 }
 
 local allModeKeymaps = {
-	['<C-_>'] = '<cmd>CommentToggle<CR>',
+	['<C-.>'] = '<cmd>CommentToggle<CR>',
 	['<C-z>'] = '<cmd>u<CR>',   							-- undo
 	['<C-s>'] = '<cmd>silent w<CR>',					-- save
 	['<C-r>'] = '<cmd>redo<CR>', 							-- redo

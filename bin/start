@@ -1,26 +1,3 @@
 #!/bin/bash
-
-if [ "$1" = "n" ]
-then
-	sudo nvidia-prime-select nvidia
-	echo "Selected mode is NVIDIA."
-
-elif [ "$1" = "l" ]
-then
-	sudo rm -rf /etc/X11/xorg.conf # remove Xorg
-	echo "Selected mode is LAPTOP."
-
-else
-	echo "bruh, 'n' for nvidia, 'l' for laptop"
-	exit 1
-fi
-
-# init this bruv
 startx ~/.xinitrc nacho
-
-if ["$1" = n]
-then
-	sudo sh ~/.screenlayout/nvidia.sh
-fi
-
 exit 0
