@@ -1,0 +1,25 @@
+theme = "default"
+
+[editor]
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+C-s =":w"
+"A-up" = ["extend_line","yank","move_line_up","open_above","replace_with_yanked","move_line_down", "move_line_down", "extend_line", "delete_selection", "move_line_up", "move_line_up"]
+"A-down" = ["extend_line","delete_selection", "paste_after", "move_line_down"]
+"C-A-up" = ["extend_line","yank","open_above","normal_mode","replace_with_yanked", "insert_mode"]
+"C-A-down" = ["extend_line","yank","move_line_down","open_above","normal_mode","replace_with_yanked", "insert_mode"]
+
+[keys.insert]
+"A-up" = ["extend_line","yank","move_line_up","open_above","replace_with_yanked","move_line_down", "move_line_down", "extend_line", "delete_selection", "move_line_up", "move_line_up"]
+"A-down" = ["extend_line","delete_selection", "paste_after", "move_line_down"]
+"C-A-up" = ["extend_line","yank","open_above","normal_mode","replace_with_yanked", "insert_mode"]
+"C-A-down" = ["extend_line","yank","move_line_down","open_above","normal_mode","replace_with_yanked", "insert_mode"]
