@@ -1,0 +1,44 @@
+theme = "mirai"
+
+[editor]
+line-number = "relative"
+mouse = false
+auto-completion=true
+auto-save=true
+auto-format=true
+text-width=80
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+soft-wrap.enable = true
+soft-wrap.max-indent-retain=80
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "file-modification-indicator", "read-only-indicator"]
+center = ["file-name"]
+right = ["diagnostics", "register", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+
+[editor.lsp]
+enable=true
+auto-signature-help=true
+display-messages = true
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 1
+
+[keys.normal]
+C-s =":w"
+"A-up" = ["extend_line","yank","move_line_up","open_above","replace_with_yanked","move_line_down", "move_line_down", "extend_line", "delete_selection", "move_line_up", "move_line_up"]
+"A-down" = ["extend_line","delete_selection", "paste_after", "move_line_down"]
+"C-A-up" = ["extend_line","yank","open_above","normal_mode","replace_with_yanked", "insert_mode"]
+"C-A-down" = ["extend_line","yank","move_line_down","open_above","normal_mode","replace_with_yanked", "insert_mode"]
+
+[keys.insert]
+"A-up" = ["extend_line","yank","move_line_up","open_above","replace_with_yanked","move_line_down", "move_line_down", "extend_line", "delete_selection", "move_line_up", "move_line_up"]
+"A-down" = ["extend_line","delete_selection", "paste_after", "move_line_down"]
+"C-A-up" = ["extend_line","yank","open_above","normal_mode","replace_with_yanked", "insert_mode"]
+"C-A-down" = ["extend_line","yank","move_line_down","open_above","normal_mode","replace_with_yanked", "insert_mode"]
