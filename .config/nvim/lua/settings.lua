@@ -4,7 +4,7 @@ vim.opt.hidden = true
 vim.opt.cursorline = true
 vim.preserveindent = true
 vim.opt.wrap = false
-vim.opt.termguicolors=true
+vim.opt.termguicolors = true
 vim.opt.ruler = true
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
@@ -30,12 +30,19 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
 vim.opt.background = "dark"
+vim.cmd("colorscheme oxocarbon")
 
 if vim.loop.os_uname().sysname == 'Linux' then
-	vim.cmd("colorscheme xresources")
 else
-	vim.cmd("colorscheme oxocarbon")
+  vim.opt.shell = "powershell"
+  vim.opt.shellcmdflag = "-command"
+  vim.opt.shellquote = "\""
+  vim.opt.shellxquote = ""
 end
+
+
+
+
 
 ------------------------------------------------
 -- Disable unwanted built-in plugins

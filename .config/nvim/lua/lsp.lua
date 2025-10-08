@@ -1,89 +1,122 @@
-require("mason").setup()
-require("mason-lspconfig").setup()
+-- lsp.lua (nvim-lspconfig ≥0.11)
+local util = require("lspconfig/util")
 
-local util = require "lspconfig/util"
-
--- LSP Languages
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.lua_ls.setup{}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.rust_analyzer.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = {"rust"},
-	root_dir = util.root_pattern("Cargo.toml"),
-	settings = {
-		['rust_analyzer'] = {
-			cargo = {
-				allFeatures = true,
-			}
-		}
-	}
-})
-
--- diagnostic symbols
-local signs = { Error = "", Warn = "", Hint = "", Info =  ""}
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- =========================
+-- Common LSP on_attach
+-- =========================
+local on_attach_common = function(client, bufnr)
+  local opts = { buffer = bufnr }
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
 
-vim.api.nvim_create_user_command("DiagnosticToggle", function()
-		local config = vim.diagnostic.config
-		local vt = config().virtual_text
-		config {
-			virtual_text = not vt,
-			underline = not vt,
-			signs = not vt,
-		}
-end, {desc = "toggle diagnostic"})
+-- =========================
+-- Capabilities
+-- =========================
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+capabilities = vim.tbl_deep_extend(
+  "force",
+  capabilities,
+  require("cmp_nvim_lsp").default_capabilities()
+)
 
-vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false,
-    float = {
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
+-- =========================
+-- LSP Servers
+-- =========================
+local servers = {
+  lua_ls = {
+    settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+  },
+  pyright = {},
+  gopls = {},
+  rust_analyzer = {},
+  clangd = {
+    root_dir = function(fname)
+      return util.root_pattern(
+            "Makefile",
+            "configure.ac",
+            "configure.in",
+            "config.h.in",
+            "meson.build",
+            "meson_options.txt",
+            "build.ninja"
+          )(fname) or util.root_pattern("compile_commands.json", "compile_flags.txt")(fname)
+          or util.find_git_ancestor(fname)
+    end,
+    capabilities = { offsetEncoding = { "utf-16" } },
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=llvm",
     },
+    init_options = {
+      usePlaceholders = true,
+      completeUnimported = true,
+      clangdFileStatus = true,
+    },
+  },
+}
+
+-- =========================
+-- Setup servers using vim.lsp.config
+-- =========================
+for server, cfg in pairs(servers) do
+  vim.lsp.config[server] = vim.tbl_deep_extend("force", {
+    on_attach = on_attach_common,
+    capabilities = capabilities,
+  }, cfg)
+end
+
+-- =========================
+-- Roslyn (C# / Unity)
+-- =========================
+require("roslyn").setup({
+  on_attach = function(_, bufnr)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+    -- Only show WARN/ERROR
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        severity_sort = true,
+        severity_limit = vim.diagnostic.severity.WARN,
+      }
+    )
+  end,
 })
 
-vim.opt.shortmess = vim.opt.shortmess + {c = true}
-vim.api.nvim_set_option('updatetime', 300)
+-- =========================
+-- Autostart LSPs by filetype
+-- =========================
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "lua", "python", "go", "rust", "c", "cpp", "cs" },
+  callback = function(args)
+    local ft_map = {
+      lua = "lua_ls",
+      python = "pyright",
+      go = "gopls",
+      rust = "rust_analyzer",
+      c = "clangd",
+      cpp = "clangd",
+      cs = "roslyn",
+    }
+    local server = ft_map[args.match]
+    if server and vim.lsp.config[server] then
+      vim.lsp.start(vim.lsp.config[server])
+    end
+  end,
+})
 
-vim.cmd([[set signcolumn=yes
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
-
-vim.lsp.protocol.CompletionItemKind = {
-    "   (Text) ",
-    "   (Method)",
-    "   (Function)",
-    "   (Constructor)",
-    " ﴲ  (Field)",
-    "[] (Variable)",
-    "   (Class)",
-    " ﰮ  (Interface)",
-    "   (Module)",
-    " 襁 (Property)",
-    "   (Unit)",
-    "   (Value)",
-    " 練 (Enum)",
-    "   (Keyword)",
-    "   (Snippet)",
-    "   (Color)",
-    "   (File)",
-    "   (Reference)",
-    "   (Folder)",
-    "   (EnumMember)",
-    " ﲀ  (Constant)",
-    " ﳤ  (Struct)",
-    "   (Event)",
-    "   (Operator)",
-    "   (TypeParameter)"
-}
+-- =========================
+-- UFO Folding
+-- =========================
+require("ufo").setup()
